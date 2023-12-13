@@ -12,24 +12,28 @@
         <meta name="author" content="Thomas Paviot">
       
       
-        <link rel="canonical" href="https://processscheduler.github.io/">
+        <link rel="canonical" href="https://processscheduler.github.io/resource_constraints/">
       
       
+        <link rel="prev" href="../resource_assignment/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+        <link rel="next" href="../buffer/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
     
     
       
-        <title>ProcessScheduler</title>
+        <title>Resource Constraints - ProcessScheduler</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,7 +52,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-mkdocs" class="md-skip">
+        <a href="#resource-constraints" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="ProcessScheduler" class="md-header__button md-logo" aria-label="ProcessScheduler" data-md-component="logo">
+    <a href=".." title="ProcessScheduler" class="md-header__button md-logo" aria-label="ProcessScheduler" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -108,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Welcome to MkDocs
+              Resource Constraints
             
           </span>
         </div>
@@ -234,7 +238,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="introduction/" class="md-tabs__link">
+        <a href="../introduction/" class="md-tabs__link">
           
   
     
@@ -250,11 +254,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="scheduling_problem/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../scheduling_problem/" class="md-tabs__link">
           
   
     
@@ -274,7 +280,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="use-case-formula-one-change-tires/" class="md-tabs__link">
+        <a href="../use-case-formula-one-change-tires/" class="md-tabs__link">
           
   
     
@@ -309,7 +315,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="ProcessScheduler" class="md-nav__button md-logo" aria-label="ProcessScheduler" data-md-component="logo">
+    <a href=".." title="ProcessScheduler" class="md-nav__button md-logo" aria-label="ProcessScheduler" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -383,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="introduction/" class="md-nav__link">
+      <a href="../introduction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -408,8 +414,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -442,12 +450,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -461,7 +469,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Concepts
@@ -475,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scheduling_problem/" class="md-nav__link">
+      <a href="../scheduling_problem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -496,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="task/" class="md-nav__link">
+      <a href="../task/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -517,7 +525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="task_constraints/" class="md-nav__link">
+      <a href="../task_constraints/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -538,7 +546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="resource/" class="md-nav__link">
+      <a href="../resource/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -559,7 +567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="resource_assignment/" class="md-nav__link">
+      <a href="../resource_assignment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -577,10 +585,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="resource_constraints/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Resource Constraints
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -589,6 +617,73 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#workload" class="md-nav__link">
+    <span class="md-ellipsis">
+      WorkLoad
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resourceunavailable" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResourceUnavailable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distinctworkers" class="md-nav__link">
+    <span class="md-ellipsis">
+      DistinctWorkers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sameworkers" class="md-nav__link">
+    <span class="md-ellipsis">
+      SameWorkers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resourcetasksdistance" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResourceTasksDistance
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -601,7 +696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="buffer/" class="md-nav__link">
+      <a href="../buffer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -622,7 +717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="first_order_logic_constraints/" class="md-nav__link">
+      <a href="../first_order_logic_constraints/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -643,7 +738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="indicator/" class="md-nav__link">
+      <a href="../indicator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -664,7 +759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="objectives/" class="md-nav__link">
+      <a href="../objectives/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -685,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="solving/" class="md-nav__link">
+      <a href="../solving/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -761,7 +856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="use-case-formula-one-change-tires/" class="md-nav__link">
+      <a href="../use-case-formula-one-change-tires/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -782,7 +877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="use-case-flow-shop/" class="md-nav__link">
+      <a href="../use-case-flow-shop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -803,7 +898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="use-case-software-development/" class="md-nav__link">
+      <a href="../use-case-software-development/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -853,18 +948,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
+  <a href="#workload" class="md-nav__link">
     <span class="md-ellipsis">
-      Commands
+      WorkLoad
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
+  <a href="#resourceunavailable" class="md-nav__link">
     <span class="md-ellipsis">
-      Project layout
+      ResourceUnavailable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distinctworkers" class="md-nav__link">
+    <span class="md-ellipsis">
+      DistinctWorkers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sameworkers" class="md-nav__link">
+    <span class="md-ellipsis">
+      SameWorkers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resourcetasksdistance" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResourceTasksDistance
     </span>
   </a>
   
@@ -885,7 +1007,7 @@
                   
 
   
-    <a href="https://github.com/tpaviot/processscheduler/edit/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/tpaviot/processscheduler/edit/master/docs/resource_constraints.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -894,27 +1016,77 @@
     
       
     
-    <a href="https://github.com/tpaviot/processscheduler/raw/master/docs/index.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/tpaviot/processscheduler/raw/master/docs/resource_constraints.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-<h1 id="welcome-to-mkdocs">Welcome to MkDocs<a class="headerlink" href="#welcome-to-mkdocs" title="Permanent link">&para;</a></h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
-</ul>
-<h2 id="project-layout">Project layout<a class="headerlink" href="#project-layout" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
+<h1 id="resource-constraints">Resource Constraints<a class="headerlink" href="#resource-constraints" title="Permanent link">&para;</a></h1>
+<p>ProcessScheduler provides a set of ready-to-use resource constraints. They allow expressing common rules such as "the resource A is available only from 8 am to 12" etc. There are a set of builtin ready-to-use constraints, listed below.</p>
+<pre class="mermaid"><code>classDiagram
+  Constraint &lt;|-- ResourceConstraint
+  ResourceConstraint &lt;|-- WorkLoad
+  ResourceConstraint &lt;|-- ResourceUnavailable
+  ResourceConstraint &lt;|-- ResourceTasksDistance
+  ResourceConstraint &lt;|-- SameWorkers
+  ResourceConstraint &lt;|-- DistinctWorkers</code></pre>
+<h2 id="workload">WorkLoad<a class="headerlink" href="#workload" title="Permanent link">&para;</a></h2>
+<p>The <code>WorkLoad</code> constraint can be used to restrict the number of tasks which are executed during  certain time periods.</p>
+<p>This constraint applies to one resource, whether it is a single worker or a cumulative worker. It takes the time periods as a python dictionary composed of time intervals (the keys) and an integer number (the capacity). The <code>kind</code> parameter allows to define which kind of restriction applies to the resource: <code>'exact'</code>, <code>'max'</code> (default value) or <code>'min'</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a> <span class="n">c1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">WorkLoad</span><span class="p">(</span><span class="n">resource</span><span class="o">=</span><span class="n">worker_1</span><span class="p">,</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                  <span class="n">dict_time_intervals_and_bound</span><span class="o">=</span><span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span> <span class="mi">2</span><span class="p">})</span>
+</code></pre></div>
+<p>In the previous example, the resource <code>worker_1</code> cannot be scheduled into more than 2 timeslots between instants 0 and 6.</p>
+<p>Any number of time intervals can be passed to this class, just extend the timeslots dictionary, e.g.:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">c1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">WorkLoad</span><span class="p">(</span><span class="n">resource</span><span class="o">=</span><span class="n">worker_1</span><span class="p">,</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                 <span class="n">dict_time_intervals_and_bound</span><span class="o">=</span><span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span> <span class="mi">6</span><span class="p">})</span>
+</code></pre></div>
+<p>The <code>WorkLoad</code> is not necessarily a <em>limitation</em>. Indeed you can specify that the integer number is actually an exact of minimal value to target. For example, if we need the resource <code>worker_1</code> to be scheduled <strong>at least</strong> into three time slots between instants 0 and 10, then:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">c1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">WorkLoad</span><span class="p">(</span><span class="n">resource</span><span class="o">=</span><span class="n">worker_1</span><span class="p">,</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                 <span class="n">dict_time_intervals_and_bound</span><span class="o">=</span><span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span> <span class="mi">3</span><span class="p">},</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                 <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="resourceunavailable">ResourceUnavailable<a class="headerlink" href="#resourceunavailable" title="Permanent link">&para;</a></h2>
+<p>A <code>ResourceUnavailable</code> applies to a resource and prevent the solver to schedule this resource during certain time periods. This class takes a list of intervals:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">worker_1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">Worker</span><span class="p">(</span><span class="s1">&#39;Sylvia&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">ca</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">ResourceUnavailable</span><span class="p">(</span><span class="n">resource</span><span class="o">=</span><span class="n">worker_1</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>                            <span class="n">list_of_time_intervals</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">)])</span>
+</code></pre></div>
+<p>The <code>ca</code> instance constraints the resource to be unavailable for 1 period between 1 and 2 instants, and for 2 periods between instants 6 and 8.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This constraint is a special case for the <code>WorkLoad</code> where the <code>number_of_time_slots</code> is set to <code>0</code>.</p>
+</div>
+<h2 id="distinctworkers">DistinctWorkers<a class="headerlink" href="#distinctworkers" title="Permanent link">&para;</a></h2>
+<p>A <code>AllDifferentWorkers</code> constraint applies to two <code>SelectWorkers</code> instances, used to assign alternative resources to a task. It constraints the solver to select different workers for each <code>SelectWorkers</code>. For instance:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">s1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SelectWorkers</span><span class="p">(</span><span class="n">list_of_workers</span><span class="o">=</span><span class="p">[</span><span class="n">worker_1</span><span class="p">,</span> <span class="n">worker_2</span><span class="p">])</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">s2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SelectWorkers</span><span class="p">(</span><span class="n">list_of_workers</span><span class="o">=</span><span class="p">[</span><span class="n">worker_1</span><span class="p">,</span> <span class="n">worker_2</span><span class="p">])</span>
+</code></pre></div>
+<p>could lead the solver to select worker_1 in both cases. Adding the following line:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">cs</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">DistinctWorkers</span><span class="p">(</span><span class="n">select_workers_1</span><span class="o">=</span><span class="n">s1</span><span class="p">,</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>                        <span class="n">select_workers_2</span><span class="o">=</span><span class="n">s2</span><span class="p">)</span>
+</code></pre></div>
+<p>let the solver selects the worker_1 for s1 and worker_2 for s2 or the opposite, worker_2 for s1 and worker_1 for s2. The cases where worker_1 is selected by both s1 and s2 or worker_2 by selected by both s1 and s2 are impossible.</p>
+<h2 id="sameworkers">SameWorkers<a class="headerlink" href="#sameworkers" title="Permanent link">&para;</a></h2>
+<p>A <code>AllSameWorkers</code> constraint applies to two <code>SelectWorkers</code> instances. It constraints the solver to ensure both different <code>SelectWorkers</code> instances select the same worker. For example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">s1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SelectWorkers</span><span class="p">(</span><span class="n">list_of_workers</span><span class="o">=</span><span class="p">[</span><span class="n">worker_1</span><span class="p">,</span> <span class="n">worker_2</span><span class="p">])</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">s2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SelectWorkers</span><span class="p">(</span><span class="n">list_of_workers</span><span class="o">=</span><span class="p">[</span><span class="n">worker_1</span><span class="p">,</span> <span class="n">worker_2</span><span class="p">])</span>
+</code></pre></div>
+<p>could lead the solver to select worker_1 for s1 and worker_2 for s2. Adding the following line:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">cs</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SameWorkers</span><span class="p">(</span><span class="n">select_workers_1</span><span class="o">=</span><span class="n">s1</span><span class="p">,</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>                    <span class="n">select_workers_2</span><span class="o">=</span><span class="n">s2</span><span class="p">)</span>
+</code></pre></div>
+<p>ensures either worker_1 is selected by both s1 and s2, or worker_2 is selected by both s1 and s2.</p>
+<h2 id="resourcetasksdistance">ResourceTasksDistance<a class="headerlink" href="#resourcetasksdistance" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">worker_1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">Worker</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Worker1&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">ps</span><span class="o">.</span><span class="n">ResourceTasksDistance</span><span class="p">(</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">resource</span><span class="o">=</span><span class="n">worker_1</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">distance</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;exact&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="n">list_of_time_intervals</span><span class="o">=</span><span class="p">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]])</span>
 </code></pre></div>
 
 
@@ -946,6 +1118,44 @@ docs/
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../resource_assignment/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Resource Assignmnent">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Resource Assignmnent
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../buffer/" class="md-footer__link md-footer__link--next" aria-label="Next: Buffers">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Buffers
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -1001,10 +1211,10 @@ docs/
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
