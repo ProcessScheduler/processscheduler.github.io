@@ -1372,10 +1372,13 @@
 
 
 <h1 id="task-constraints">Task Constraints<a class="headerlink" href="#task-constraints" title="Permanent link">&para;</a></h1>
-<p>ProcessScheduler offers a comprehensive set of predefined temporal task constraints to help you express common scheduling rules efficiently. These constraints allow you to define task-related rules such as "Task A must start exactly at time 4," "Task B must end simultaneously with Task C," "Task C should be scheduled precisely 3 periods after Task D," and more.</p>
+<p>The ProcessScheduler framework provides a powerful set of predefined temporal task constraints to facilitate the expression of common scheduling rules efficiently. These constraints empower you to articulate task-related regulations, such as fixed start times, synchronized endings, precedence relationships, and more.</p>
+<p>The <code>TaskConstraint</code> class is a specialized extension of the generic <code>Constraint</code> class, forming the foundation for expressing task-related scheduling rules.</p>
+<pre class="mermaid"><code>classDiagram
+  Constraint &lt;|-- TaskConstraint</code></pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Constraints that start with <code>Task*</code> apply to a single task, while those starting with <code>Task**s***</code> apply to two or more task instances.</p>
+<p>Constraints that start with <code>Task*</code> apply to a single task, while those starting with <code>Tasks***</code> apply to two or more task instances.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1385,21 +1388,57 @@
 </div>
 <h2 id="single-task-temporal-constraints">Single task temporal constraints<a class="headerlink" href="#single-task-temporal-constraints" title="Permanent link">&para;</a></h2>
 <p>These constraints apply to individual tasks.</p>
+<pre class="mermaid"><code>classDiagram
+  TaskConstraint &lt;|-- TaskStartAt
+  TaskConstraint &lt;|-- TaskStartAfter
+  TaskConstraint &lt;|-- TaskEndAt
+  TaskConstraint &lt;|-- TaskEndBefore
+class TaskStartAt{
+    +Task task
+    +int value
+  }
+class TaskStartAfter{
+    +Task task
+    +int value    
+}
+class TaskEndAt{
+    +Task task
+    +int value
+}
+class TaskEndBefore{
+    +Task task
+    +int value
+}</code></pre>
 <h3 id="taskstartat">TaskStartAt<a class="headerlink" href="#taskstartat" title="Permanent link">&para;</a></h3>
 <p>Ensures that a tasks starts precisely at a specified time instant.</p>
-<p><code>TaskStartAt</code>: takes two parameters <code>task</code> and <code>value</code> such as the task starts exactly at the instant
-<span class="arithmatex">\(<span class="arithmatex">\(task.start = value\)</span>\)</span></p>
+<p><code>TaskStartAt</code>: takes two parameters <code>task</code> and <code>value</code> such as the task starts exactly at the instant</p>
+<div class="arithmatex">\[task.start = value\]</div>
 <h3 id="taskstartafter">TaskStartAfter<a class="headerlink" href="#taskstartafter" title="Permanent link">&para;</a></h3>
 <p>Enforces that a task must start after a given time instant.</p>
 <p><code>TaskStartAfterStrict</code> can be strict lor lax.</p>
+<div class="arithmatex">\[task.start &gt;= value\]</div>
 <h3 id="taskendat">TaskEndAt<a class="headerlink" href="#taskendat" title="Permanent link">&para;</a></h3>
 <p>Ensures that a task ends precisely at a specified time instant.</p>
-<p><code>TaskEndAt</code>: takes two parameters <code>task</code> and <code>value</code> such as the task ends exactly at the instant <em>value</em> :math:<code>task.end = value</code></p>
+<div class="arithmatex">\[task.end = value\]</div>
+<p><code>TaskEndAt</code>: takes two parameters <code>task</code> and <code>value</code> such as the task ends exactly at the instant <em>value</em>.</p>
 <h3 id="taskendbefore">TaskEndBefore<a class="headerlink" href="#taskendbefore" title="Permanent link">&para;</a></h3>
 <p>Requires that a task ends before or at a given time instant.</p>
-<p><code>TaskEndBeforeStrict</code> can be strict or lax.</p>
+<div class="arithmatex">\[task.end &lt;= value\]</div>
+<p><code>TaskEndBefore</code> can be strict or lax.</p>
 <h2 id="two-tasks-temporal-constraints">Two tasks temporal constraints<a class="headerlink" href="#two-tasks-temporal-constraints" title="Permanent link">&para;</a></h2>
 <p>These constraints apply to sets of two tasks.</p>
+<pre class="mermaid"><code>classDiagram
+  TaskConstraint &lt;|-- TaskPrecedence
+  TaskConstraint &lt;|-- TasksStartSynced
+  TaskConstraint &lt;|-- TasksEndSynced
+  TaskConstraint &lt;|-- TasksDontOverlap
+class TaskPrecedence{
+    +Task task_before
+    +Task task_after
+    +str kind
+    +int offset
+}
+</code></pre>
 <h3 id="taskprecedence">TaskPrecedence<a class="headerlink" href="#taskprecedence" title="Permanent link">&para;</a></h3>
 <p>Ensures that one task is scheduled before another. The precedence can be either 'lax,' 'strict,' or 'tight,' and an optional offset can be applied.</p>
 <p>The <code>TaskPrecedence</code> class takes two parameters <code>task_1</code> and <code>task_2</code> and constraints <code>task_2</code> to be scheduled after <code>task_1</code> is completed. The precedence type can either be :const:<code>'lax'</code> (default, <code>task_2.start</code> &gt;= <code>task_1.end</code>)), :const:<code>'strict'</code> (<code>task_2.start</code> &gt;= <code>task_1.end</code>)) or :const:<code>'tight'</code> (<code>task_2.start</code> &gt;= <code>task_1.end</code>, task_2 starts immediately after task_1 is completed). An optional parameter <code>offset</code> can be additionally set.</p>

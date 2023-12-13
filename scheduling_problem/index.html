@@ -972,21 +972,22 @@
 <h1 id="scheduling-problem">Scheduling problem<a class="headerlink" href="#scheduling-problem" title="Permanent link">&para;</a></h1>
 <p>The <code>SchedulingProblem</code> class is the container for all modeling objects, such as tasks, resources and constraints.</p>
 <h2 id="time-slots-as-integers">Time slots as integers<a class="headerlink" href="#time-slots-as-integers" title="Permanent link">&para;</a></h2>
-<p>A <code>SchedulingProblem</code> instance holds a <em>time</em> interval: the lower bound of this interval (the <em>initial time</em>) is always 0, the upper bound (the <em>final time</em>) can be set by passing the <code>horizon</code> attribute to the <code>__init__</code> method:</p>
+<p>A <code>SchedulingProblem</code> instance holds a <em>time</em> interval: the lower bound of this interval (the <em>initial time</em>) is always 0, the upper bound (the <em>final time</em>) can be set by passing the <code>horizon</code> attribute to the <code>__init__</code> method, for example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">my_problem</span> <span class="o">=</span> <span class="n">SchedulingProblem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;MySchedulingProblem&#39;</span><span class="p">,</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                               <span class="n">horizon</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </code></pre></div>
-<p>The interval's duration is subdivided into discrete units called <em>periods</em>, each with a fixed duration of 1. If <span class="arithmatex">\(horizon\)</span> is set to a value, then the number of periods is equal to <span class="arithmatex">\(horizon\)</span>, and the number of points within the interval <span class="arithmatex">\([0;horizon]\)</span> is <span class="arithmatex">\(horizon+1\)</span>.</p>
+<p>The interval's duration is subdivided into discrete units called <em>periods</em>, each with a fixed duration of 1. The number of periods is equal to <span class="arithmatex">\(horizon\)</span>, and the number of points within the interval <span class="arithmatex">\([0;horizon]\)</span> is <span class="arithmatex">\(horizon+1\)</span>.</p>
 <p><img alt="TimeLineHorizon" src="../img/TimeLineHorizon.svg" width="90%" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>ProcessScheduler handles variables using <strong>integer</strong> values.</p>
+<p>ProcessScheduler handles only variables using <strong>dimensionless integer values</strong>.</p>
 </div>
 <p>A period represents the finest granularity level for defining the timeline, task durations, and the schedule itself. This timeline is dimensionless, allowing you to map a period to your desired duration, be it in seconds, minutes, hours, or any other unit. For instance:</p>
 <ul>
-<li>If you aim to schedule tasks within a single day, say from 8 am to 6 pm (office hours), resulting in a 10-hour time interval, and you plan to schedule tasks in 1-hour intervals, then the horizon value should be set to 10 to achieve the desired number of periods:</li>
+<li>If your goal is to plan tasks within a single day, such as from 8 am to 6 pm (office hours), resulting in a 10-hour time span, and you intend to schedule tasks in 1-hour increments, then the horizon value should be set to 10 to achieve the desired number of periods:</li>
 </ul>
 <div class="arithmatex">\[horizon = \frac{18-8}{1}=10\]</div>
+<p>This implies that you can schedule tasks with durations measured in whole hours, making it impractical to schedule tasks with durations of half an hour or 45 minutes.</p>
 <ul>
 <li>If your task scheduling occurs in the morning, from 8 am to 12 pm, resulting in a 4-hour time interval, and you intend to schedule tasks in 1-minute intervals, then the horizon value must be 240:</li>
 </ul>
