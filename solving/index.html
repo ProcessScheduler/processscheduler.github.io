@@ -1067,18 +1067,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-in-debug-mode" class="md-nav__link">
+  <a href="#optimization-solver-incremental-solver" class="md-nav__link">
     <span class="md-ellipsis">
-      Run in debug mode
+      Optimization solver, incremental solver
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#render-to-a-gantt-chart" class="md-nav__link">
+  <a href="#multiple-objective-optimization-using-the-optimize-solver-default" class="md-nav__link">
     <span class="md-ellipsis">
-      Render to a Gantt chart
+      Multiple objective optimization using the optimize solver (default)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple objective optimization using the optimize solver (default)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lexicon-priority-lex-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lexicon priority ('lex', default)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#box-priority-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      Box priority ('box')
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pareto-priority-pareto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pareto priority ('pareto')
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-in-debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run in debug mode
     </span>
   </a>
   
@@ -1587,18 +1629,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-in-debug-mode" class="md-nav__link">
+  <a href="#optimization-solver-incremental-solver" class="md-nav__link">
     <span class="md-ellipsis">
-      Run in debug mode
+      Optimization solver, incremental solver
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#render-to-a-gantt-chart" class="md-nav__link">
+  <a href="#multiple-objective-optimization-using-the-optimize-solver-default" class="md-nav__link">
     <span class="md-ellipsis">
-      Render to a Gantt chart
+      Multiple objective optimization using the optimize solver (default)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple objective optimization using the optimize solver (default)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lexicon-priority-lex-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lexicon priority ('lex', default)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#box-priority-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      Box priority ('box')
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pareto-priority-pareto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pareto priority ('pareto')
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-in-debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run in debug mode
     </span>
   </a>
   
@@ -1724,25 +1808,99 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Solution<span class="w"> </span><span class="k">for</span><span class="w"> </span>task_1.start:<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <p>You can recursively call <code>find_another_solution</code> to find all possible solutions, until the solver fails to return a new one.</p>
+<h2 id="optimization-solver-incremental-solver">Optimization solver, incremental solver<a class="headerlink" href="#optimization-solver-incremental-solver" title="Permanent link">&para;</a></h2>
+<p>ProcessScheduler can deal with multiple objectives optimization. There is no limitation regarding the number of objectives.</p>
+<p>Imagine you need to schedule two tasks <code>task_1</code> and <code>task_2</code> the later. After you defined the task as usual, then create the objective and set the optimization target:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">pb</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SchedulingProblem</span><span class="p">(</span><span class="s1">&#39;MultiObjective1&#39;</span><span class="p">,</span> <span class="n">horizon</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">task_1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">FixedDurationTask</span><span class="p">(</span><span class="s1">&#39;task1&#39;</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">task_2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">FixedDurationTask</span><span class="p">(</span><span class="s1">&#39;task2&#39;</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">indicator_1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">Indicator</span><span class="p">(</span><span class="s1">&#39;Task1End&#39;</span><span class="p">,</span> <span class="n">task_1</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">indicator_2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">Indicator</span><span class="p">(</span><span class="s1">&#39;Task2End&#39;</span><span class="p">,</span> <span class="n">task_2</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">ps</span><span class="o">.</span><span class="n">MaximizeObjective</span><span class="p">(</span><span class="s1">&#39;MaximizeTask1End&#39;</span><span class="p">,</span> <span class="n">indicator_1</span><span class="p">)</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">ps</span><span class="o">.</span><span class="n">MaximizeObjective</span><span class="p">(</span><span class="s1">&#39;MaximizeTask2End&#39;</span><span class="p">,</span> <span class="n">indicator_2</span><span class="p">)</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">solution</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SchedulingSolver</span><span class="p">(</span><span class="n">pb</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span>
+</code></pre></div>
+<p>After running the script, you may get the following output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">[</span>...<span class="o">]</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="o">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s2">&quot;horizon&quot;</span>:<span class="w"> </span><span class="m">20</span>,
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s2">&quot;indicators&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="s2">&quot;EquivalentIndicator&quot;</span>:<span class="w"> </span>-40,
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="s2">&quot;Task1End&quot;</span>:<span class="w"> </span><span class="m">20</span>,
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="s2">&quot;Task2End&quot;</span>:<span class="w"> </span><span class="m">20</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="o">}</span>,
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="o">[</span>...<span class="o">]</span>
+</code></pre></div>
+<p>The solver gives the expected result. Note that an EquivalentIndicator is built from both indicators. A maximization problem is always turned into a minimization problem (the equivalent indicator is negative).</p>
+<h2 id="multiple-objective-optimization-using-the-optimize-solver-default">Multiple objective optimization using the optimize solver (default)<a class="headerlink" href="#multiple-objective-optimization-using-the-optimize-solver-default" title="Permanent link">&para;</a></h2>
+<h3 id="lexicon-priority-lex-default">Lexicon priority (<code>'lex'</code>, default)<a class="headerlink" href="#lexicon-priority-lex-default" title="Permanent link">&para;</a></h3>
+<p>The solver optimizes the first objective, then the second one while keeping the first value, then the third one keeping both previous values etc.</p>
+<p>In the previous example, the first objective to be optimized will be the end of task_1, obviously 20. Then, this value being fixed, there's no other solution than start of the second task is 0, then task_2 end will be 3.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">ps</span><span class="o">.</span><span class="n">SchedulingSolver</span><span class="p">(</span><span class="n">pb</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">optimize</span><span class="p">,</span> <span class="n">optimize_priority</span><span class="o">=</span><span class="s1">&#39;lex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+</code></pre></div>
+<p>And the output</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Optimization<span class="w"> </span>results:
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="o">=====================</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span>-&gt;Objective<span class="w"> </span>priority<span class="w"> </span>specification:<span class="w"> </span>lex
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span>-&gt;Objective<span class="w"> </span>values:
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">        </span>-&gt;Indicator_Task1End<span class="o">(</span>max<span class="w"> </span>objective<span class="o">)</span>:<span class="w"> </span><span class="m">20</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">        </span>-&gt;Indicator_Task2End<span class="o">(</span>max<span class="w"> </span>objective<span class="o">)</span>:<span class="w"> </span><span class="m">3</span>
+</code></pre></div>
+<h3 id="box-priority-box">Box priority (<code>'box'</code>)<a class="headerlink" href="#box-priority-box" title="Permanent link">&para;</a></h3>
+<p>The optimization solver breaks the dependency between objectives and look for the maximum (resp. minimum) value that can be achieved for each objective.</p>
+<p>In the previous example, the maximum of task_1end can be 20, and the maximum of task_2.end can also be 20, but not at the same time. The <code>box</code> priority then gives an information about the values that can be reached.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">ps</span><span class="o">.</span><span class="n">SchedulingSolver</span><span class="p">(</span><span class="n">pb</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">optimize</span><span class="p">,</span> <span class="n">optimize_priority</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+</code></pre></div>
+<p>And the output</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Optimization<span class="w"> </span>results:
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="o">=====================</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span>-&gt;Objective<span class="w"> </span>priority<span class="w"> </span>specification:<span class="w"> </span>lex
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span>-&gt;Objective<span class="w"> </span>values:
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span>-&gt;Indicator_Task1End<span class="o">(</span>max<span class="w"> </span>objective<span class="o">)</span>:<span class="w"> </span><span class="m">20</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">        </span>-&gt;Indicator_Task2End<span class="o">(</span>max<span class="w"> </span>objective<span class="o">)</span>:<span class="w"> </span><span class="m">20</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In <code>box</code> mode, both objectives may not be reached simultaneously, the solver will give anyway a solution that satisfies <strong>all</strong> constraints (by default the solution obtained from the lexicon mode).</p>
+</div>
+<h3 id="pareto-priority-pareto">Pareto priority (<code>'pareto'</code>)<a class="headerlink" href="#pareto-priority-pareto" title="Permanent link">&para;</a></h3>
+<p>The optimization solver suggests a new solution each time the <code>solve()</code> method is called. This allows traversing all solutions. Indeed we can have the task_1 end to 20 and task_2 end 3, but also the task_1 end to 19 and task_2 end to 4 etc. These all are solutions for the optimization problem.</p>
+<p>The python code has to be slightly modified:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">solver</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SchedulingSolver</span><span class="p">(</span><span class="n">pb</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">optimize</span><span class="p">,</span> <span class="n">optimize_priority</span><span class="o">=</span><span class="s1">&#39;pareto&#39;</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">while</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">():</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="k">pass</span>
+</code></pre></div>
+<p>And the output will be:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Optimization<span class="w"> </span>results:
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="o">=====================</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span>-&gt;Objective<span class="w"> </span>priority<span class="w"> </span>specification:<span class="w"> </span>pareto
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span>-&gt;Objective<span class="w"> </span>values:
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">        </span>-&gt;Indicator_Task1End<span class="o">(</span>max<span class="w"> </span>objective<span class="o">)</span>:<span class="w"> </span><span class="m">20</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">        </span>-&gt;Indicator_Task2End<span class="o">(</span>max<span class="w"> </span>objective<span class="o">)</span>:<span class="w"> </span><span class="m">3</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>SAT<span class="w"> </span>computation<span class="w"> </span>time:
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="o">=====================</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">    </span>MultiObjective2<span class="w"> </span>satisfiability<span class="w"> </span>checked<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.00s
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>Optimization<span class="w"> </span>results:
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="o">=====================</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">    </span>-&gt;Objective<span class="w"> </span>priority<span class="w"> </span>specification:<span class="w"> </span>pareto
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">    </span>-&gt;Objective<span class="w"> </span>values:
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">        </span>-&gt;Indicator_Task1End<span class="o">(</span>max<span class="w"> </span>objective<span class="o">)</span>:<span class="w"> </span><span class="m">19</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">        </span>-&gt;Indicator_Task2End<span class="o">(</span>max<span class="w"> </span>objective<span class="o">)</span>:<span class="w"> </span><span class="m">4</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>SAT<span class="w"> </span>computation<span class="w"> </span>time:
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="o">=====================</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="w">    </span>MultiObjective2<span class="w"> </span>satisfiability<span class="w"> </span>checked<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.00s
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>Optimization<span class="w"> </span>results:
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="o">=====================</span>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="w">    </span>-&gt;Objective<span class="w"> </span>priority<span class="w"> </span>specification:<span class="w"> </span>pareto
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="w">    </span>-&gt;Objective<span class="w"> </span>values:
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="w">        </span>-&gt;Indicator_Task1End<span class="o">(</span>max<span class="w"> </span>objective<span class="o">)</span>:<span class="w"> </span><span class="m">18</span>
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="w">        </span>-&gt;Indicator_Task2End<span class="o">(</span>max<span class="w"> </span>objective<span class="o">)</span>:<span class="w"> </span><span class="m">5</span>
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="o">[</span>...<span class="o">]</span>
+</code></pre></div>
+<p>Here you have 18 different solutions. You can add a test to the loop to stop the iteration as soon as you're ok with the solution.</p>
 <h2 id="run-in-debug-mode">Run in debug mode<a class="headerlink" href="#run-in-debug-mode" title="Permanent link">&para;</a></h2>
 <p>If the <code>debug</code> attribute is set to True, the z3 solver is run with the unsat_core option. This will result in a much longer computation time, but this will help identifying the constraints that conflict. Because of this higher consumption of resources, the <code>debug</code> flag should be used only if the solver fails to find a solution.</p>
-<h2 id="render-to-a-gantt-chart">Render to a Gantt chart<a class="headerlink" href="#render-to-a-gantt-chart" title="Permanent link">&para;</a></h2>
-<p>Call the :func:<code>render_gantt_matplotlib</code> to render the solution as a Gantt chart. The time line is from 0 to <code>horizon</code> value, you can choose to render either <code>Task</code> or <code>Resource</code> (default).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">if</span> <span class="n">solution</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">solution</span><span class="o">.</span><span class="n">render_gantt_matplotlib</span><span class="p">()</span>  <span class="c1"># default render_mode is &#39;Resource&#39;</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="c1"># a second gantt chart, in &#39;Task&#39; mode</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">solution</span><span class="o">.</span><span class="n">render_gantt_matplotlib</span><span class="p">(</span><span class="n">render_mode</span><span class="o">=</span><span class="s1">&#39;Task&#39;</span><span class="p">)</span>
-</code></pre></div>
-<p>Call the <code>ps.render_gantt_plotly</code> to render the solution as a Gantt chart using <strong>plotly</strong>.
-Take care that plotly rendering needs <strong>real timepoints</strong> (set at least <code>delta_time</code> at the problem creation).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">if</span> <span class="n">solution</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="c1"># default render_mode is &#39;Resource&#39;</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">solution</span><span class="o">.</span><span class="n">render_gantt_plotly</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="s2">&quot;Start&quot;</span><span class="p">,</span> <span class="n">html_filename</span><span class="o">=</span><span class="s2">&quot;index.html&quot;</span><span class="p">)</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="c1"># a second gantt chart, in &#39;Task&#39; mode</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">solution</span><span class="o">.</span><span class="n">render_gantt_plotly</span><span class="p">(</span><span class="n">render_mode</span><span class="o">=</span><span class="s1">&#39;Task&#39;</span><span class="p">)</span>
-</code></pre></div>
 
 
 

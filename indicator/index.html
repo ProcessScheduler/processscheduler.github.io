@@ -940,18 +940,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-an-indicator-instance" class="md-nav__link">
+  <a href="#builtin-indicators" class="md-nav__link">
     <span class="md-ellipsis">
-      Create an Indicator instance
+      Builtin indicators
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#builtin-indicators-resource-cost-utilization-number-of-tasks-assigned" class="md-nav__link">
+  <a href="#customized-indicators" class="md-nav__link">
     <span class="md-ellipsis">
-      Builtin indicators : Resource cost, utilization, number of tasks assigned
+      Customized indicators
     </span>
   </a>
   
@@ -1535,18 +1535,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-an-indicator-instance" class="md-nav__link">
+  <a href="#builtin-indicators" class="md-nav__link">
     <span class="md-ellipsis">
-      Create an Indicator instance
+      Builtin indicators
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#builtin-indicators-resource-cost-utilization-number-of-tasks-assigned" class="md-nav__link">
+  <a href="#customized-indicators" class="md-nav__link">
     <span class="md-ellipsis">
-      Builtin indicators : Resource cost, utilization, number of tasks assigned
+      Customized indicators
     </span>
   </a>
   
@@ -1584,33 +1584,92 @@
 
 
 <h1 id="indicator">Indicator<a class="headerlink" href="#indicator" title="Permanent link">&para;</a></h1>
-<h2 id="create-an-indicator-instance">Create an Indicator instance<a class="headerlink" href="#create-an-indicator-instance" title="Permanent link">&para;</a></h2>
-<p>The <code>Indicator</code> class allows to define a criterion that quantifies the schedule so that it can be compared with other schedules. An <code>Indicator</code> instance results in a conclusion such a 'the schedule A is better than schedule B because the indicator XXX is greater/lower'.</p>
-<p>An <code>Indicator</code> instance is created by passing the indicator name as well as the mathematical expression to compute. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">flow_time</span> <span class="o">=</span> <span class="n">Indicator</span><span class="p">(</span><span class="s1">&#39;FlowTime&#39;</span><span class="p">,</span> <span class="n">task1</span><span class="o">.</span><span class="n">end</span> <span class="o">+</span> <span class="n">task2</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">duration_square</span> <span class="o">=</span> <span class="n">Indicator</span><span class="p">(</span><span class="s1">&#39;MinTaskDuration&#39;</span><span class="p">,</span> <span class="n">task1</span><span class="o">.</span><span class="n">duration</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">task2</span><span class="o">.</span><span class="n">duration</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-</code></pre></div>
-<p>Indicator values are computed by the solver, and are part of the solution. If the solution is rendered as a matplotlib Gantt chart, the indicator values are displayed on the upper right corner of the chart.</p>
-<p>Indicators can also be bounded, although it is an optional feature. It is useful if the indicator is further be maximized (or minimized) by an optimization solver, in order to reduce the computation time. For example,</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">indicator1</span> <span class="o">=</span> <span class="n">Indicator</span><span class="p">(</span><span class="s1">&#39;Example1&#39;</span><span class="p">,</span> <span class="n">task2</span><span class="o">.</span><span class="n">start</span> <span class="o">-</span> <span class="n">task1</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="n">bounds</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span> <span class="c1"># If lower and upper bounded</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">indicator2</span> <span class="o">=</span> <span class="n">Indicator</span><span class="p">(</span><span class="s1">&#39;Example2&#39;</span><span class="p">,</span> <span class="n">task3</span><span class="o">.</span><span class="n">start</span> <span class="o">-</span> <span class="n">task2</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="n">bounds</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span> <span class="c1"># If only upper bounded</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">indicator3</span> <span class="o">=</span> <span class="n">Indicator</span><span class="p">(</span><span class="s1">&#39;Example3&#39;</span><span class="p">,</span> <span class="n">task4</span><span class="o">.</span><span class="n">start</span> <span class="o">-</span> <span class="n">task3</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="n">bounds</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span> <span class="c1"># If only lower bounded</span>
-</code></pre></div>
+<p>The <code>Indicator</code> class allows to define a criterion that quantifies the schedule so that it can be compared with other schedules. An <code>Indicator</code> measures a specific behaviour you need to trace, evaluate or optimize.</p>
+<p>All builtin indicators inherit from the base class <code>Indicator</code>:
+<pre class="mermaid"><code>classDiagram
+  Indicator
+class Indicator{
+    +List[int, int] bounds
+  }</code></pre></p>
+<p>Indicator values are computed by the solver, and are part of the solution. If the solution is rendered as a matplotlib Gantt chart, the indicator value is displayed on the upper right corner of the chart.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>There is no limit to the number of Indicators defined in the problem. The mathematical expression must be expressed in a polynomial form and using the <code>Sqrt</code> function. Any other advanced mathematical functions such as <code>exp</code>, <code>sin</code>, etc. is not allowed because not supported by the solver.</p>
 </div>
-<h2 id="builtin-indicators-resource-cost-utilization-number-of-tasks-assigned">Builtin indicators : Resource cost, utilization, number of tasks assigned<a class="headerlink" href="#builtin-indicators-resource-cost-utilization-number-of-tasks-assigned" title="Permanent link">&para;</a></h2>
-<p>Two usual indicators are available : the utilization and cost of a resource (or a list of resources).</p>
-<p>Use the <code>add_indicator_resource_utilization</code> method to insert a cost computation to your schedule. This method takes a list of resources and compute the total cost (sum of productivity * duration for all resources). The result is a percentage: an utilization of 100% means that the resource is assigned 100% of the schedule timeline. In the following example, the indicator reports the utilization percentage of the <code>worker_1</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">utilization_res_1</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">add_indicator_resource_utilization</span><span class="p">(</span><span class="n">worker_1</span><span class="p">)</span>
+<h2 id="builtin-indicators">Builtin indicators<a class="headerlink" href="#builtin-indicators" title="Permanent link">&para;</a></h2>
+<p>Available builtin indicators are listed below:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Apply to</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IndicatorTardiness</td>
+<td>List of tasks</td>
+<td>Unweighted total tardiness of the selected tasks</td>
+</tr>
+<tr>
+<td>IndicatorNumberOfTardyTasks</td>
+<td>List of tasks</td>
+<td>Number of tardy tasks from the selected tasks</td>
+</tr>
+<tr>
+<td>IndicatorMaximumLateness</td>
+<td>List of tasks</td>
+<td>Maximum lateness of selected tasks</td>
+</tr>
+<tr>
+<td>IndicatorResourceUtilization</td>
+<td>Single resource</td>
+<td>Resource utilization, from 0% to 100% of the schedule horizon, of the selected resource</td>
+</tr>
+<tr>
+<td>IndicatorNumberTasksAssigned</td>
+<td>Single resource</td>
+<td>Number of tasks assigned to the selected resource</td>
+</tr>
+<tr>
+<td>IndicatorResourceCost</td>
+<td>List of resources</td>
+<td>Total cost of selected resources</td>
+</tr>
+<tr>
+<td>IndicatorMaxBufferLevel</td>
+<td>Buffer</td>
+<td>Maximum level of the selected buffer</td>
+</tr>
+<tr>
+<td>IndicatorMinBufferLevel</td>
+<td>Buffer</td>
+<td>Minimum level of the selected buffer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="customized-indicators">Customized indicators<a class="headerlink" href="#customized-indicators" title="Permanent link">&para;</a></h2>
+<p>Use the <code>IndicatorFromMathExpression</code> class to define an indicator that may not be available from the previous list.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">ind</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">IndicatorFromMathExpression</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Task1End&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                                     <span class="n">expression</span><span class="o">=</span><span class="n">task_1</span><span class="o">.</span><span class="n">_end</span><span class="p">)</span>
 </code></pre></div>
-<p>The <code>add_indicator_resource_cost</code> method returns the total cost of a resource (or a list of resource). It is computed using each cost function defined for each resource. In the following example, the indicator <code>cost_ind</code> is the total cost for both ressources <code>worker_1</code> and <code>worker_2</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">cost_ind</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">add_indicator_resource_cost</span><span class="p">([</span><span class="n">worker_1</span><span class="p">,</span> <span class="n">worker_2</span><span class="p">])</span>
+<p>or</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">ind</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">IndicatorFromMathExpression</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;SquareDistanceBetweenTasks&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                                     <span class="n">expression</span><span class="o">=</span><span class="p">(</span><span class="n">task_1</span><span class="o">.</span><span class="n">_start</span> <span class="o">-</span> <span class="n">task_2</span><span class="o">.</span><span class="n">_end</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
-<p>At last, the <code>add_indicator_number_tasks_assigned</code> method returns the number of tasks assigned to a resource after the schedule is completed.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">problem</span><span class="o">.</span><span class="n">add_indicator_number_tasks_assigned</span><span class="p">(</span><span class="n">worker</span><span class="p">)</span>
+<p>Customized indicators can also be bounded, although it is an optional feature. Bounds are constraints over an indicator value. It is useful if the indicator is further be maximized (or minimized) by an optimization solver, in order to reduce the computation time. For example,</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">indicator1</span> <span class="o">=</span> <span class="n">Indicator</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Example1&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                       <span class="n">expression</span><span class="o">=</span><span class="n">task2</span><span class="o">.</span><span class="n">start</span> <span class="o">-</span> <span class="n">task1</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                       <span class="n">bounds</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span> <span class="c1"># If lower and upper bounded</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">indicator2</span> <span class="o">=</span> <span class="n">Indicator</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Example2&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>                       <span class="n">expression</span><span class="o">=</span><span class="n">task3</span><span class="o">.</span><span class="n">start</span> <span class="o">-</span> <span class="n">task2</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>                       <span class="n">bounds</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span> <span class="c1"># If only upper bounded</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">indicator3</span> <span class="o">=</span> <span class="n">Indicator</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Example3&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>                       <span class="n">expression</span><span class="o">=</span><span class="n">task4</span><span class="o">.</span><span class="n">start</span> <span class="o">-</span> <span class="n">task3</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>                       <span class="n">bounds</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span> <span class="c1"># If only lower bounded</span>
 </code></pre></div>
+<p>Bounds are set to <code>None</code> by default.</p>
 
 
 
