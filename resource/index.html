@@ -574,6 +574,8 @@
       
         
       
+        
+      
     
     
     
@@ -793,6 +795,27 @@
   
   <span class="md-ellipsis">
     Buffers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../function/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functions
   </span>
   
 
@@ -1718,28 +1741,30 @@
 </div>
 <p>The workers :const:<code>productivity</code> is used by the solver to satisfy the targeted task <code>work_amount</code> parameter value.</p>
 <h2 id="resource-cost">Resource cost<a class="headerlink" href="#resource-cost" title="Permanent link">&para;</a></h2>
-<p>You can associate cost information with any resource, enabling ProcessScheduler to compute the total cost of a schedule, the cost per resource, or optimize the schedule to minimize costs (see the Objective section for details). There are two ways to define resource costs:</p>
+<p>You can associate cost information with any resource, enabling ProcessScheduler to compute the total cost of a schedule, the cost per resource, or optimize the schedule to minimize costs (see the Objective section for details).</p>
+<p>The resource cost can be defined as a <strong>time dependant <a href="../function/">Function</a></strong>.</p>
 <h3 id="constant-cost-per-period">Constant Cost Per Period<a class="headerlink" href="#constant-cost-per-period" title="Permanent link">&para;</a></h3>
 <p>In this approach, the resource's cost remains constant over time.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">dev_1</span> <span class="o">=</span> <span class="n">Worker</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;SeniorDeveloper&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>               <span class="n">cost</span><span class="o">=</span><span class="n">ConstantCostFunction</span><span class="p">(</span><span class="mi">750</span><span class="p">))</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>               <span class="n">cost</span><span class="o">=</span><span class="n">ConstantFunction</span><span class="p">(</span><span class="mi">750</span><span class="p">))</span>
 </code></pre></div>
 <div class="arithmatex">\[C(t) = k, k \in \mathbb{N}\]</div>
 <h3 id="linear-cost-function">Linear Cost Function :<a class="headerlink" href="#linear-cost-function" title="Permanent link">&para;</a></h3>
 <div class="arithmatex">\[C(t)=slope * t + intercept, (slope, intercept) \in \mathbb{N} \times \mathbb{N}\]</div>
-<p>ml</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">dev_1</span> <span class="o">=</span> <span class="n">Worker</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;SeniorDeveloper&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>               <span class="n">cost</span><span class="o">=</span><span class="n">LinearFunction</span><span class="p">(</span><span class="n">slope</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">intercept</span><span class="o">=</span><span class="mi">23</span><span class="p">))</span>
+</code></pre></div>
 <h3 id="polynomial-cost-function">Polynomial Cost Function<a class="headerlink" href="#polynomial-cost-function" title="Permanent link">&para;</a></h3>
 <div class="arithmatex">\[C(t)={a_n}t^n + {a_{n-1}}t^{n-1} + ... + {a_i}t^i + ... + {a_1}t+{a_0}\]</div>
 <p>This method allows you to represent resource costs as a polynomial function of time. It's particularly useful for modeling costs that are volatile (e.g., oil prices) or time-dependent (e.g., electricity costs). The cost parameter accepts any Python callable object.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span> <span class="nf">quadratic_time_function</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">154</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">cost_function</span> <span class="o">=</span> <span class="n">PolynomialCostFunction</span><span class="p">(</span><span class="n">quadratic_time_function</span><span class="p">)</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">dev_1</span> <span class="o">=</span> <span class="n">Worker</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;AWorker&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>               <span class="n">cost</span><span class="o">=</span><span class="n">cost_function</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span> <span class="nf">quadratic_time_function</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">154</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">dev_1</span> <span class="o">=</span> <span class="n">Worker</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;AWorker&#39;</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>               <span class="n">cost</span><span class="o">=</span><span class="n">PolynomialFunction</span><span class="p">(</span><span class="n">coefficients</span> <span class="o">=</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">]))</span>
 </code></pre></div>
 <p>The worker <code>cost</code> is set to <code>None</code> by default.</p>
 <p>You can visualize the cost function using Matplotlib, which provides insights into how the cost evolves over time:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">cost_function</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">cost_function</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
 </code></pre></div>
 <img alt="QuadraticCostFunction" src="../img/CostQuadraticFunction.svg" /></p>
 <div class="admonition warning">
@@ -1749,7 +1774,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 </div>
-<p>The worker <code>cost_per_period</code> is useful to measure the total cost of a resource/a set of resources/a schedule, or to find the schedule that minimizes the total cost of a resource/a set of resources/ a schedule.</p>
+<p>The worker <code>cost</code> is useful to measure the total cost of a resource/a set of resources/a schedule, or to find the schedule that minimizes the total cost of a resource/a set of resources/ a schedule.</p>
 
 
 
