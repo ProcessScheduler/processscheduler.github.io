@@ -499,8 +499,6 @@
       
         
       
-        
-      
     
     
     
@@ -1068,6 +1066,8 @@
       
         
       
+        
+      
     
     
     
@@ -1087,7 +1087,7 @@
             
   
   <span class="md-ellipsis">
-    Optimize
+    Solve
   </span>
   
 
@@ -1097,9 +1097,30 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
-            Optimize
+            Solve
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solving/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1112,7 +1133,7 @@
         
   
   <span class="md-ellipsis">
-    Objectives
+    Optimize objectives
   </span>
   
 
@@ -1136,27 +1157,6 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../solving/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Solve
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
       
@@ -1176,10 +1176,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
         
           
-          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1190,8 +1190,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
             <span class="md-nav__icon md-icon"></span>
             Render
           </label>
@@ -1262,6 +1262,8 @@
   
     
     
+      
+        
       
         
       
@@ -1355,7 +1357,28 @@
         
   
   <span class="md-ellipsis">
-    Team Managament
+    Team Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinedo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scheduling - Theory, Algorithms, and Systems
   </span>
   
 
@@ -1736,14 +1759,78 @@
 <p>In activity-based cost accounting, a task, a subdivision of an activity, is the least amount of work. Tasks are used to describe activities.</p>
 </li>
 </ol>
-<p>In the context of this software library, the concept of a task aligns with the first definition. ProcessScheduler's primary objective is to compute a chronological sequence, or temporal order, for a collection of tasks while adhering to a specific set of constraints.</p>
-<p>The inheritance class diagram is the following:
+<p>In the context of this software library, the concept of a task aligns with the first definition : the <strong>lowest level to which work can be divided on a project</strong>. ProcessScheduler's primary objective is to compute a chronological sequence, or temporal order, for a collection of tasks while adhering to a specific set of constraints. Three types of <code>Task</code> may be used to represent a scheduling problem : <strong>ZeroDurationTask</strong>, <strong>FixedDurationTask</strong> and <strong>VariableDurationTask</strong>. They follow the inheritance class diagram represented below.</p>
 <pre class="mermaid"><code>classDiagram
   Task &lt;|-- ZeroDurationTask
   Task &lt;|-- FixedDurationTask
-  Task &lt;|-- VariableDurationTask</code></pre></p>
+  Task &lt;|-- VariableDurationTask
+class Task{
+    +str name
+    +bool optional
+    +int release_date
+    +int due_date
+    +bool due_date_is_deadline
+    +int priority
+    +int work_amount
+}
+</code></pre>
 <h2 id="common-base-task-model">Common base Task model<a class="headerlink" href="#common-base-task-model" title="Permanent link">&para;</a></h2>
-<p>The <code>Task</code> class and its derivatives represent any task. A <code>Task</code> instance is defined by the three following parameters:</p>
+<p>The <code>Task</code> class and its derivatives represent any activity. The parameters for the creation of a <code>Task</code> are the following:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>unique string</td>
+<td>The name of the task <strong>must be unique</strong> among all other tasks</td>
+</tr>
+<tr>
+<td>optional</td>
+<td>bool</td>
+<td>False</td>
+<td>If the task is optional</td>
+</tr>
+<tr>
+<td>release_date</td>
+<td>int</td>
+<td>None</td>
+<td>Also be referred to as the ready date. It is the time the job arrives at the system, i.e., the earliest time at which the task can start its processing</td>
+</tr>
+<tr>
+<td>due_date</td>
+<td>int</td>
+<td>None</td>
+<td>the committed shipping or completion date (i.e., the date the job is promised to the customer)</td>
+</tr>
+<tr>
+<td>due_date_is_deadline</td>
+<td>bool</td>
+<td>False</td>
+<td>if <code>False</code>, completion of the task after its due date is allowed, but then a penalty is incurred. If <code>True</code> the task cannot be scheduled <em>after</em> its due_date</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>int</td>
+<td>1</td>
+<td>A number denoting the importance of the task relative to the other tasks in the system. A task with a priority of 10 should be considered as 10 times more important than a task with a priority of 1</td>
+</tr>
+<tr>
+<td>work_amount</td>
+<td>int</td>
+<td>0</td>
+<td>the quantity of work necessary to be completed by all the resources assigned</td>
+</tr>
+</tbody>
+</table>
+<p>A <code>Task</code> instance is defined by the three following parameters:</p>
 <ul>
 <li>
 <p><code>start</code>: a point in the <span class="arithmatex">\([0, horizon]\)</span> integer interval. If the task is scheduled, then <span class="arithmatex">\(start&gt;=0\)</span></p>
@@ -1789,7 +1876,7 @@
 </code></pre></div>
 <h2 id="advanced-parameters">Advanced parameters<a class="headerlink" href="#advanced-parameters" title="Permanent link">&para;</a></h2>
 <h3 id="work-amount">Work amount<a class="headerlink" href="#work-amount" title="Permanent link">&para;</a></h3>
-<p>The <code>work_amount</code> is the total amount of work that the <code>Task</code> must provide. It is set to :const:<code>0</code> by default. The <code>work_amount</code> is a dimensionless positive integer value, it can be mapped to any unit according to the physical meaning of the work amount. For example, if the task target is to move small pieces of wood from one point to another, then the work_amount maybe 166000 if 166000 pieces of woods are to be moved. In a maintenance task, if there are 8 screws to unscrew, the UnScrew work_amount will be set to 8.</p>
+<p>The <code>work_amount</code> is the total amount of work that the <code>Task</code> must provide. It is set to <code>0</code> by default. The <code>work_amount</code> is a dimensionless positive integer value, it can be mapped to any unit according to the physical meaning of the work amount. For example, if the task target is to move small pieces of wood from one point to another, then the work_amount maybe 166000 if 166000 pieces of woods are to be moved. In a maintenance task, if there are 8 screws to unscrew, the UnScrew work_amount will be set to 8.</p>
 <h3 id="temporal-priority">Temporal priority<a class="headerlink" href="#temporal-priority" title="Permanent link">&para;</a></h3>
 <p>The <code>priority</code> of a task is a positive integer that can take any value. It is not bounded. A task with a higher priority will be scheduled earlier than a task with a lower priority. If the solver is requested to optimize the global schedule in terms of task priorities (a "priority objective") then a task with a high priority <em>may</em> be scheduled before a task with a lower priority.</p>
 <h3 id="optional">Optional<a class="headerlink" href="#optional" title="Permanent link">&para;</a></h3>

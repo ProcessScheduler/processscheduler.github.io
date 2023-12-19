@@ -499,8 +499,6 @@
       
         
       
-        
-      
     
     
     
@@ -1017,6 +1015,8 @@
       
         
       
+        
+      
     
     
     
@@ -1036,7 +1036,7 @@
             
   
   <span class="md-ellipsis">
-    Optimize
+    Solve
   </span>
   
 
@@ -1046,9 +1046,30 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
-            Optimize
+            Solve
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solving/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1061,7 +1082,7 @@
         
   
   <span class="md-ellipsis">
-    Objectives
+    Optimize objectives
   </span>
   
 
@@ -1085,27 +1106,6 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../solving/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Solve
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
       
@@ -1125,10 +1125,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
         
           
-          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1139,8 +1139,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
             <span class="md-nav__icon md-icon"></span>
             Render
           </label>
@@ -1211,6 +1211,8 @@
   
     
     
+      
+        
       
         
       
@@ -1304,7 +1306,28 @@
         
   
   <span class="md-ellipsis">
-    Team Managament
+    Team Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinedo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scheduling - Theory, Algorithms, and Systems
   </span>
   
 
@@ -1643,17 +1666,20 @@ class PolynomialFunction{
 <h2 id="constantfunction">ConstantFunction<a class="headerlink" href="#constantfunction" title="Permanent link">&para;</a></h2>
 <div class="arithmatex">\[ f(x) = K, \forall x \in \mathbb{N}\]</div>
 <p>in python</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">my_function</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">ConstantFunction</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">my_function</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">ConstantFunction</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">55</span><span class="p">)</span>
 </code></pre></div>
+<p><img alt="svg" src="../img/constant_function.svg" /></p>
 <h2 id="linearfunction">LinearFunction<a class="headerlink" href="#linearfunction" title="Permanent link">&para;</a></h2>
 <div class="arithmatex">\[ f(x) = s \times t + i, \forall x \in \mathbb{N}\]</div>
 <p>in python</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">my_function</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">LinearFunction</span><span class="p">(</span><span class="n">slope</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">intercept</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
+<p><img alt="svg" src="../img/linear_function.svg" /></p>
 <h2 id="polynomialfunction">PolynomialFunction<a class="headerlink" href="#polynomialfunction" title="Permanent link">&para;</a></h2>
 <div class="arithmatex">\[f(x)={a_n}x^n + {a_{n-1}}x^{n-1} + ... + {a_i}x^i + ... + {a_1}x+{a_0}\]</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">my_function</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">PolynomialFunction</span><span class="p">(</span><span class="n">coefficients</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
 </code></pre></div>
+<p><img alt="svg" src="../img/polynomial_function.svg" /></p>
 
 
 
