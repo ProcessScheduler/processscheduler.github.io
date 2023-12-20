@@ -260,7 +260,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../scheduling_problem/" class="md-tabs__link">
+        <a href="../workflow/" class="md-tabs__link">
           
   
     
@@ -539,6 +539,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../scheduling_problem/" class="md-nav__link">
         
   
@@ -574,6 +595,8 @@
       
         
       
+        
+      
     
     
     
@@ -586,10 +609,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -600,8 +623,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             Represent
           </label>
@@ -730,6 +753,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dynamic-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic assignment
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -781,6 +813,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../indicator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Indicators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -818,10 +871,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -832,8 +885,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             Constraint
           </label>
@@ -914,79 +967,6 @@
   
   <span class="md-ellipsis">
     First Order Logics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
-    Measure
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
-            <span class="md-nav__icon md-icon"></span>
-            Measure
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../indicator/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Indicators
   </span>
   
 
@@ -1616,6 +1596,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dynamic-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic assignment
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1705,6 +1694,31 @@ Let's consider the following example: 3 drillers are available, a drilling task 
 </code></pre></div>
 <p>In this case, the solver is instructed to assign exactly one resource from the list of three workers capable of performing the task. The <code>kind</code> parameter can be set to <code>'exact'</code> (default), <code>'min'</code>, or <code>'max'</code>, depending on your requirements. Additionally, you can specify the number of workers to select with <code>nb_workers_to_select</code>, which can be any integer between 1 (default value) and the total number of eligible workers in the list.</p>
 <p>These resource assignment options provide flexibility and control over how tasks are allocated to available resources, ensuring efficient scheduling in various use cases.</p>
+<h2 id="dynamic-assignment">Dynamic assignment<a class="headerlink" href="#dynamic-assignment" title="Permanent link">&para;</a></h2>
+<p>The <code>add_required_resource</code> method includes an optional parameter named <code>dynamic</code>, which is set to <code>False</code> by default. When set to <code>True</code>, this parameter allows a resource to join the task at any point during its duration, from start to finish. This feature is particularly useful for tasks that demand a significant amount of work and could benefit from additional resources joining in to decrease the overall time required for completion.</p>
+<p>Consider the example of a task, <span class="arithmatex">\(T_1\)</span>, which has a total <code>work_amount</code> of 150. This task can be undertaken by two machines, <span class="arithmatex">\(M_1\)</span> and <span class="arithmatex">\(M_2\)</span>. <span class="arithmatex">\(M_1\)</span> offers a lower productivity rate of 5 work units per period, in contrast to <span class="arithmatex">\(M_2\)</span>, which is significantly more productive with a rate of 20 work units per period. The completion time for <span class="arithmatex">\(T_1\)</span> is initially unknown and depends on the machine assigned to it. Additionally, suppose that machine <span class="arithmatex">\(M_2\)</span> is unavailable until time instant 10. The current scenario can be depicted as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">pb</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SchedulingProblem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;DynamicAssignment&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">T_1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">VariableDurationTask</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;T_1&quot;</span><span class="p">,</span> <span class="n">work_amount</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">M_1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">Worker</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;M_1&quot;</span><span class="p">,</span> <span class="n">productivity</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">M_2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">Worker</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;M_2&quot;</span><span class="p">,</span> <span class="n">productivity</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">T1</span><span class="o">.</span><span class="n">add_required_resources</span><span class="p">([</span><span class="n">M_1</span><span class="p">,</span> <span class="n">M_2</span><span class="p">])</span>
+</code></pre></div>
+<p>We get this result:</p>
+<p><img alt="GanttDynamic1" src="../img/gantt_dynamic_1.svg" width="100%" /></p>
+<p>In this case, the solver waits until both <span class="arithmatex">\(M_1\)</span> and <span class="arithmatex">\(M_2\)</span> are available before scheduling task <span class="arithmatex">\(T_1\)</span>. A total of 6 time units are needed to complete the task, calculated as <span class="arithmatex">\(6 \times 5 + 6 \times 20 = 150\)</span>.</p>
+<p>Now, let's modify the scenario, allowing <span class="arithmatex">\(M_2\)</span> to join in processing <span class="arithmatex">\(T_1\)</span> as soon as it becomes available, even if the task has already started. This approach, known as "dynamic allocation," necessitates altering the assignment like so:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">T1</span><span class="o">.</span><span class="n">add_required_resource</span><span class="p">(</span><span class="n">M_1</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">T1</span><span class="o">.</span><span class="n">add_required_resource</span><span class="p">(</span><span class="n">M_2</span><span class="p">,</span> <span class="n">dynamic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p>To optimize the schedule, it's also necessary to enable the <code>ObjectiveMinimizeMakespan</code> optimization:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">ps</span><span class="o">.</span><span class="n">ObjectiveMinimizeMakespan</span><span class="p">()</span>
+</code></pre></div>
+<p>With these adjustments, the solution is as follows:</p>
+<p><img alt="GanttDynamic2" src="../img/gantt_dynamic_2.svg" width="100%" /></p>
+<p>The makespan is reduced to 14. Machine <span class="arithmatex">\(M_1\)</span> begins processing <span class="arithmatex">\(T_1\)</span> at the earliest opportunity (time 0), and machine <span class="arithmatex">\(M_2\)</span> joins the task at time 10 when it becomes available. The total work output remains at <span class="arithmatex">\(150 = 14 * 5 + 4 * 20\)</span>.</p>
 
 
 
