@@ -1037,14 +1037,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#logical-task-constraints" class="md-nav__link">
+  <a href="#optional-task-constraints" class="md-nav__link">
     <span class="md-ellipsis">
-      Logical task constraints
+      Optional task constraints
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Logical task constraints">
+    <nav class="md-nav" aria-label="Optional task constraints">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optionaltaskforceschedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      OptionalTaskForceSchedule
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#optionaltaskconditionschedule" class="md-nav__link">
@@ -1912,14 +1921,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#logical-task-constraints" class="md-nav__link">
+  <a href="#optional-task-constraints" class="md-nav__link">
     <span class="md-ellipsis">
-      Logical task constraints
+      Optional task constraints
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Logical task constraints">
+    <nav class="md-nav" aria-label="Optional task constraints">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optionaltaskforceschedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      OptionalTaskForceSchedule
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#optionaltaskconditionschedule" class="md-nav__link">
@@ -2119,7 +2137,9 @@ constraints the solver to schedule task_2 start exactly 2 periods after task_1 i
 <p class="admonition-title">Note</p>
 <p>If the task(s) is (are) optional(s), all these constraints apply only if the task is scheduled. If the solver does not schedule the task, these constraints does not apply.</p>
 </div>
-<h2 id="logical-task-constraints">Logical task constraints<a class="headerlink" href="#logical-task-constraints" title="Permanent link">&para;</a></h2>
+<h2 id="optional-task-constraints">Optional task constraints<a class="headerlink" href="#optional-task-constraints" title="Permanent link">&para;</a></h2>
+<h3 id="optionaltaskforceschedule">OptionalTaskForceSchedule<a class="headerlink" href="#optionaltaskforceschedule" title="Permanent link">&para;</a></h3>
+<p>Force an optional task to be (un)scheduled.</p>
 <h3 id="optionaltaskconditionschedule">OptionalTaskConditionSchedule<a class="headerlink" href="#optionaltaskconditionschedule" title="Permanent link">&para;</a></h3>
 <p>Creates a constraint that schedules a task based on a specified Boolean condition.</p>
 <p><code>OptionalTaskConditionSchedule</code> creates a constraint that adds a condition for the task to be scheduled. The condition is a z3 BoolRef</p>
@@ -2270,6 +2290,10 @@ constraints the solver to schedule task_2 start exactly 2 periods after task_1 i
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
   </body>

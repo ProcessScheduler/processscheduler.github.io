@@ -24,7 +24,7 @@
     
     
       
-        <title>About - ProcessScheduler</title>
+        <title>Introduction - ProcessScheduler</title>
       
     
     
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              About
+              Introduction
             
           </span>
         </div>
@@ -1522,7 +1522,10 @@
 
 <h1 id="about">About<a class="headerlink" href="#about" title="Permanent link">&para;</a></h1>
 <p>ProcessScheduler operates on models written in the Python programming language, offering the flexibility to accommodate a wide range of scheduling requirements for tasks and resources.</p>
-<p>To tackle scheduling challenges, ProcessScheduler leverages the power of the Microsoft SMT <a href="https://github.com/Z3Prover/z3">Z3 Prover</a>, an MIT licensed <a href="https://en.wikipedia.org/wiki/Satisfiability_modulo_theories">SMT solver</a>. For those eager to delve deeper into the optimization aspects of the solver, a comprehensive reference can be found in the paper "Bjorner et al. νZ - An Optimizing SMT Solver (2016)." Additionally, an introductory guide to programming with Z3 in Python is available at <a href="https://ericpony.github.io/z3py-tutorial/guide-examples.htm">z3-py-tutorial</a>. It's worth noting that Z3 is the only mandatory dependency for ProcessScheduler.</p>
+<p>To tackle scheduling challenges, ProcessScheduler leverages the power of the Microsoft SMT <a href="https://github.com/Z3Prover/z3">Z3 Prover</a>, an MIT licensed <a href="https://en.wikipedia.org/wiki/Satisfiability_modulo_theories">SMT solver</a>. For those eager to delve deeper into the optimization aspects of the solver, a comprehensive reference can be found in the paper:</p>
+<p>Bjørner, N., Phan, AD., Fleckenstein, L. (2015). νZ - An Optimizing SMT Solver. In: Baier, C., Tinelli, C. (eds) Tools and Algorithms for the Construction and Analysis of Systems. TACAS 2015. Lecture Notes in Computer Science, vol 9035. Springer, Berlin, Heidelberg. <a href="https://doi.org/10.1007/978-3-662-46681-0_14">https://doi.org/10.1007/978-3-662-46681-0_14</a></p>
+<p>Additionally, an introductory guide to programming with Z3 in Python is available at <a href="https://ericpony.github.io/z3py-tutorial/guide-examples.htm">z3-py-tutorial</a>. </p>
+<p>It's worth noting that Z3 is the <strong>only mandatory dependency</strong> for ProcessScheduler.</p>
 <p>Furthermore, the tool offers the flexibility to visualize scheduling solutions by rendering them into Gantt charts, which can be exported in common formats such as JPG, PNG, PDF, or SVG. Please note that the optional libraries, matplotlib and plotly, are not pre-installed but can be easily integrated based on your preferences and needs.</p>
 <h1 id="downloadinstall">Download/install<a class="headerlink" href="#downloadinstall" title="Permanent link">&para;</a></h1>
 <p>Use <code>pip</code> to install the package and the required dependencies (Z3) on your machine:</p>
@@ -1545,6 +1548,9 @@ and check the installation from a python3 prompt:</p>
 
 
 
+
+  
+  
 
 
 
@@ -1665,6 +1671,10 @@ and check the installation from a python3 prompt:</p>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
   </body>

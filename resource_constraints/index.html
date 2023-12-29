@@ -908,6 +908,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#resourcetasksdistance" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResourceTasksDistance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resourcenondelay" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResourceNonDelay
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#distinctworkers" class="md-nav__link">
     <span class="md-ellipsis">
       DistinctWorkers
@@ -920,15 +938,6 @@
   <a href="#sameworkers" class="md-nav__link">
     <span class="md-ellipsis">
       SameWorkers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resourcetasksdistance" class="md-nav__link">
-    <span class="md-ellipsis">
-      ResourceTasksDistance
     </span>
   </a>
   
@@ -1597,6 +1606,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#resourcetasksdistance" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResourceTasksDistance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resourcenondelay" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResourceNonDelay
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#distinctworkers" class="md-nav__link">
     <span class="md-ellipsis">
       DistinctWorkers
@@ -1609,15 +1636,6 @@
   <a href="#sameworkers" class="md-nav__link">
     <span class="md-ellipsis">
       SameWorkers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resourcetasksdistance" class="md-nav__link">
-    <span class="md-ellipsis">
-      ResourceTasksDistance
     </span>
   </a>
   
@@ -1660,6 +1678,7 @@
   Constraint &lt;|-- ResourceConstraint
   ResourceConstraint &lt;|-- WorkLoad
   ResourceConstraint &lt;|-- ResourceUnavailable
+  ResourceConstraint &lt;|-- ResourceNonDelay
   ResourceConstraint &lt;|-- ResourceTasksDistance
   ResourceConstraint &lt;|-- SameWorkers
   ResourceConstraint &lt;|-- DistinctWorkers</code></pre>
@@ -1690,35 +1709,78 @@
 <p class="admonition-title">Note</p>
 <p>This constraint is a special case for the <code>WorkLoad</code> where the <code>number_of_time_slots</code> is set to <code>0</code>.</p>
 </div>
+<h2 id="resourcetasksdistance">ResourceTasksDistance<a class="headerlink" href="#resourcetasksdistance" title="Permanent link">&para;</a></h2>
+<p>This constraint enforces a specific number of time unitary periods between tasks for a single resource. It can be applied within specified time intervals.</p>
+<table>
+<thead>
+<tr>
+<th>attribute</th>
+<th>type</th>
+<th>default</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resource</td>
+<td>Union[Worker, CumulativeWorker]</td>
+<td>x</td>
+<td>The resource to which the constraint applies.</td>
+</tr>
+<tr>
+<td>distance</td>
+<td>int</td>
+<td>X</td>
+<td>The desired number of time unitary periods between tasks.</td>
+</tr>
+<tr>
+<td>list_of_time_intervals</td>
+<td>list</td>
+<td>None</td>
+<td>A list of time intervals within which the constraint is restricted.</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>Literal["min", "max", "exact"]</td>
+<td>"exact"</td>
+<td>The mode for enforcing the constraint</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">worker_1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">Worker</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Worker1&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">ps</span><span class="o">.</span><span class="n">ResourceTasksDistance</span><span class="p">(</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">resource</span><span class="o">=</span><span class="n">worker_1</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">distance</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;exact&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">list_of_time_intervals</span><span class="o">=</span><span class="p">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]])</span>
+</code></pre></div>
+<h2 id="resourcenondelay">ResourceNonDelay<a class="headerlink" href="#resourcenondelay" title="Permanent link">&para;</a></h2>
+<p>A non-delay schedule is a type of feasible schedule where no machine is kept idle while there is an operation waiting for processing. Essentially, this approach prohibits unforced idleness.</p>
+<p><code>ResourceNonDelay</code> class is designed to prevent idle time for a resource when a task is ready for processing bu forcing idle time to 0. That means that all tasks processed by this resource will be contiguous in the schedule, if ever a solution exists.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">machine_1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">Worker</span><span class="p">(</span><span class="s1">&#39;Machine1&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">ps</span><span class="o">.</span><span class="n">ResourceNonDelay</span><span class="p">(</span><span class="n">resource</span><span class="o">=</span><span class="n">worker_1</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="distinctworkers">DistinctWorkers<a class="headerlink" href="#distinctworkers" title="Permanent link">&para;</a></h2>
 <p>A <code>AllDifferentWorkers</code> constraint applies to two <code>SelectWorkers</code> instances, used to assign alternative resources to a task. It constraints the solver to select different workers for each <code>SelectWorkers</code>. For instance:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">s1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SelectWorkers</span><span class="p">(</span><span class="n">list_of_workers</span><span class="o">=</span><span class="p">[</span><span class="n">worker_1</span><span class="p">,</span> <span class="n">worker_2</span><span class="p">])</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">s2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SelectWorkers</span><span class="p">(</span><span class="n">list_of_workers</span><span class="o">=</span><span class="p">[</span><span class="n">worker_1</span><span class="p">,</span> <span class="n">worker_2</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">s1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SelectWorkers</span><span class="p">(</span><span class="n">list_of_workers</span><span class="o">=</span><span class="p">[</span><span class="n">worker_1</span><span class="p">,</span> <span class="n">worker_2</span><span class="p">])</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">s2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SelectWorkers</span><span class="p">(</span><span class="n">list_of_workers</span><span class="o">=</span><span class="p">[</span><span class="n">worker_1</span><span class="p">,</span> <span class="n">worker_2</span><span class="p">])</span>
 </code></pre></div>
 <p>could lead the solver to select worker_1 in both cases. Adding the following line:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">cs</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">DistinctWorkers</span><span class="p">(</span><span class="n">select_workers_1</span><span class="o">=</span><span class="n">s1</span><span class="p">,</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>                        <span class="n">select_workers_2</span><span class="o">=</span><span class="n">s2</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">cs</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">DistinctWorkers</span><span class="p">(</span><span class="n">select_workers_1</span><span class="o">=</span><span class="n">s1</span><span class="p">,</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>                        <span class="n">select_workers_2</span><span class="o">=</span><span class="n">s2</span><span class="p">)</span>
 </code></pre></div>
 <p>let the solver selects the worker_1 for s1 and worker_2 for s2 or the opposite, worker_2 for s1 and worker_1 for s2. The cases where worker_1 is selected by both s1 and s2 or worker_2 by selected by both s1 and s2 are impossible.</p>
 <h2 id="sameworkers">SameWorkers<a class="headerlink" href="#sameworkers" title="Permanent link">&para;</a></h2>
 <p>A <code>AllSameWorkers</code> constraint applies to two <code>SelectWorkers</code> instances. It constraints the solver to ensure both different <code>SelectWorkers</code> instances select the same worker. For example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">s1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SelectWorkers</span><span class="p">(</span><span class="n">list_of_workers</span><span class="o">=</span><span class="p">[</span><span class="n">worker_1</span><span class="p">,</span> <span class="n">worker_2</span><span class="p">])</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">s2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SelectWorkers</span><span class="p">(</span><span class="n">list_of_workers</span><span class="o">=</span><span class="p">[</span><span class="n">worker_1</span><span class="p">,</span> <span class="n">worker_2</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">s1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SelectWorkers</span><span class="p">(</span><span class="n">list_of_workers</span><span class="o">=</span><span class="p">[</span><span class="n">worker_1</span><span class="p">,</span> <span class="n">worker_2</span><span class="p">])</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">s2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SelectWorkers</span><span class="p">(</span><span class="n">list_of_workers</span><span class="o">=</span><span class="p">[</span><span class="n">worker_1</span><span class="p">,</span> <span class="n">worker_2</span><span class="p">])</span>
 </code></pre></div>
 <p>could lead the solver to select worker_1 for s1 and worker_2 for s2. Adding the following line:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">cs</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SameWorkers</span><span class="p">(</span><span class="n">select_workers_1</span><span class="o">=</span><span class="n">s1</span><span class="p">,</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>                    <span class="n">select_workers_2</span><span class="o">=</span><span class="n">s2</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">cs</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SameWorkers</span><span class="p">(</span><span class="n">select_workers_1</span><span class="o">=</span><span class="n">s1</span><span class="p">,</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>                    <span class="n">select_workers_2</span><span class="o">=</span><span class="n">s2</span><span class="p">)</span>
 </code></pre></div>
 <p>ensures either worker_1 is selected by both s1 and s2, or worker_2 is selected by both s1 and s2.</p>
-<h2 id="resourcetasksdistance">ResourceTasksDistance<a class="headerlink" href="#resourcetasksdistance" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">worker_1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">Worker</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Worker1&quot;</span><span class="p">)</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">ps</span><span class="o">.</span><span class="n">ResourceTasksDistance</span><span class="p">(</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">resource</span><span class="o">=</span><span class="n">worker_1</span><span class="p">,</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">distance</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;exact&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="n">list_of_time_intervals</span><span class="o">=</span><span class="p">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]])</span>
-</code></pre></div>
 
 
 
@@ -1861,6 +1923,10 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
   </body>
