@@ -238,7 +238,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../introduction/" class="md-tabs__link">
+        <a href="../about/" class="md-tabs__link">
           
   
     
@@ -413,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href="../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -859,6 +859,8 @@
       
         
       
+        
+      
     
     
     
@@ -925,6 +927,27 @@
   
   <span class="md-ellipsis">
     Resource Constraints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../indicator_constraints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Indicator Constraints
   </span>
   
 
@@ -1646,7 +1669,7 @@
 <pre class="mermaid"><code>classDiagram
     Task "0..n" -- "1..n" Resource</code></pre>
 <p>The most common case is that a finite number <span class="arithmatex">\(n\)</span> of workers are required to perform a set of <span class="arithmatex">\(m\)</span> tasks.</p>
-<p>There are three ways to assign resource(s) to perform a task : single resource assignment, multiple resource assignement and alternative resource assignement.</p>
+<p>There are three ways to assign resource(s) to perform a task : single resource assignment, multiple resource assignment and alternative resource assignment.</p>
 <h2 id="single-resource-assignment">Single resource assignment<a class="headerlink" href="#single-resource-assignment" title="Permanent link">&para;</a></h2>
 <p>For assigning a single resource to a task, you can use the following syntax:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">assemble_engine</span> <span class="o">=</span> <span class="n">FixedDurationTask</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;AssembleCarEngine&#39;</span><span class="p">,</span>

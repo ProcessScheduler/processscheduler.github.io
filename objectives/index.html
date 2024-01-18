@@ -238,7 +238,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../introduction/" class="md-tabs__link">
+        <a href="../about/" class="md-tabs__link">
           
   
     
@@ -413,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href="../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -779,6 +779,8 @@
       
         
       
+        
+      
     
     
     
@@ -845,6 +847,27 @@
   
   <span class="md-ellipsis">
     Resource Constraints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../indicator_constraints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Indicator Constraints
   </span>
   
 
@@ -1837,7 +1860,7 @@
 <h2 id="custommized-objectives">Custommized objectives<a class="headerlink" href="#custommized-objectives" title="Permanent link">&para;</a></h2>
 <p>You can create your own objective using the <code>ObjectiveMaximizeIndicator</code> and <code>ObjectiveMinimizeIndicator</code> classes.</p>
 <h2 id="available-solvers-incremental-and-optimize">Available solvers : incremental and optimize<a class="headerlink" href="#available-solvers-incremental-and-optimize" title="Permanent link">&para;</a></h2>
-<p>The default optimization solver is <code>incremental</code>. After a solution is found, the solver will run again and again to find a better solution untill the maximum allowed time is reached. If you provide a small max_time value, the solver will exit to the last found value, but there may be a better value. In that case, just increase the max_time and run again the solver.</p>
+<p>The default optimization solver is <code>incremental</code>. After a solution is found, the solver will run again and again to find a better solution until the maximum allowed time is reached. If you provide a small max_time value, the solver will exit to the last found value, but there may be a better value. In that case, just increase the max_time and run again the solver.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">solver</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SchedulingSolver</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">pb</span><span class="p">,</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                             <span class="n">max_time</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>  <span class="c1"># 300s is 5 minutes</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>

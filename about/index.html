@@ -12,7 +12,7 @@
         <meta name="author" content="Thomas Paviot">
       
       
-        <link rel="canonical" href="https://processscheduler.github.io/introduction/">
+        <link rel="canonical" href="https://processscheduler.github.io/about/">
       
       
       
@@ -24,7 +24,7 @@
     
     
       
-        <title>Introduction - ProcessScheduler</title>
+        <title>About - ProcessScheduler</title>
       
     
     
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              About
             
           </span>
         </div>
@@ -787,6 +787,8 @@
       
         
       
+        
+      
     
     
     
@@ -853,6 +855,27 @@
   
   <span class="md-ellipsis">
     Resource Constraints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../indicator_constraints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Indicator Constraints
   </span>
   
 
@@ -1504,7 +1527,7 @@
                   
 
   
-    <a href="https://github.com/tpaviot/processscheduler/edit/master/docs/introduction.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/tpaviot/processscheduler/edit/master/docs/about.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1513,7 +1536,7 @@
     
       
     
-    <a href="https://github.com/tpaviot/processscheduler/raw/master/docs/introduction.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/tpaviot/processscheduler/raw/master/docs/about.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
@@ -1527,21 +1550,6 @@
 <p>Additionally, an introductory guide to programming with Z3 in Python is available at <a href="https://ericpony.github.io/z3py-tutorial/guide-examples.htm">z3-py-tutorial</a>. </p>
 <p>It's worth noting that Z3 is the <strong>only mandatory dependency</strong> for ProcessScheduler.</p>
 <p>Furthermore, the tool offers the flexibility to visualize scheduling solutions by rendering them into Gantt charts, which can be exported in common formats such as JPG, PNG, PDF, or SVG. Please note that the optional libraries, matplotlib and plotly, are not pre-installed but can be easily integrated based on your preferences and needs.</p>
-<h1 id="downloadinstall">Download/install<a class="headerlink" href="#downloadinstall" title="Permanent link">&para;</a></h1>
-<p>Use <code>pip</code> to install the package and the required dependencies (Z3) on your machine:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>ProcessScheduler
-</code></pre></div>
-and check the installation from a python3 prompt:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">processscheduler</span> <span class="k">as</span> <span class="nn">ps</span>
-</code></pre></div>
-<h1 id="development-version">Development version<a class="headerlink" href="#development-version" title="Permanent link">&para;</a></h1>
-<p>Create a local copy of the <code>github &lt;https://github.com/tpaviot/ProcessScheduler&gt;</code>_ repository:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tpaviot/ProcessScheduler
-</code></pre></div>
-<p>Then install the development version:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>ProcessScheduler
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
-</code></pre></div>
 
 
 

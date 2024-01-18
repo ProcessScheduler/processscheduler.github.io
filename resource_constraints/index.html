@@ -18,7 +18,7 @@
         <link rel="prev" href="../task_constraints/">
       
       
-        <link rel="next" href="../customized_constraints/">
+        <link rel="next" href="../indicator_constraints/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -238,7 +238,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../introduction/" class="md-tabs__link">
+        <a href="../about/" class="md-tabs__link">
           
   
     
@@ -413,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href="../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -781,6 +781,8 @@
       
         
       
+        
+      
     
     
     
@@ -947,6 +949,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../indicator_constraints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Indicator Constraints
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1757,7 +1780,7 @@
 </code></pre></div>
 <h2 id="resourcenondelay">ResourceNonDelay<a class="headerlink" href="#resourcenondelay" title="Permanent link">&para;</a></h2>
 <p>A non-delay schedule is a type of feasible schedule where no machine is kept idle while there is an operation waiting for processing. Essentially, this approach prohibits unforced idleness.</p>
-<p><code>ResourceNonDelay</code> class is designed to prevent idle time for a resource when a task is ready for processing bu forcing idle time to 0. That means that all tasks processed by this resource will be contiguous in the schedule, if ever a solution exists.</p>
+<p><code>ResourceNonDelay</code> class is designed to prevent idle time for a resource when a task is ready for processing but forcing idle time to 0. That means that all tasks processed by this resource will be contiguous in the schedule, if ever a solution exists.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">machine_1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">Worker</span><span class="p">(</span><span class="s1">&#39;Machine1&#39;</span><span class="p">)</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">ps</span><span class="o">.</span><span class="n">ResourceNonDelay</span><span class="p">(</span><span class="n">resource</span><span class="o">=</span><span class="n">worker_1</span><span class="p">)</span>
 </code></pre></div>
@@ -1833,13 +1856,13 @@
         
         
           
-          <a href="../customized_constraints/" class="md-footer__link md-footer__link--next" aria-label="Next: Customized Constraints">
+          <a href="../indicator_constraints/" class="md-footer__link md-footer__link--next" aria-label="Next: Indicator Constraints">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Customized Constraints
+                Indicator Constraints
               </div>
             </div>
             <div class="md-footer__button md-icon">
