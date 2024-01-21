@@ -646,17 +646,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Tasks
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -666,105 +655,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="Page contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Page contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#common-base-task-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common base Task model
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fixeddurationtask-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      FixedDurationTask class
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zerodurationtask-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      ZeroDurationTask class
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variabledurationtask-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      VariableDurationTask class
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Advanced parameters
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Advanced parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#work-amount" class="md-nav__link">
-    <span class="md-ellipsis">
-      Work amount
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#temporal-priority" class="md-nav__link">
-    <span class="md-ellipsis">
-      Temporal priority
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      Optional
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -1628,92 +1518,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Page contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#common-base-task-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common base Task model
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fixeddurationtask-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      FixedDurationTask class
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zerodurationtask-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      ZeroDurationTask class
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variabledurationtask-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      VariableDurationTask class
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Advanced parameters
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Advanced parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#work-amount" class="md-nav__link">
-    <span class="md-ellipsis">
-      Work amount
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#temporal-priority" class="md-nav__link">
-    <span class="md-ellipsis">
-      Temporal priority
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      Optional
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1754,6 +1558,20 @@
 </li>
 </ol>
 <p>In the context of this software library, the concept of a task aligns with the first definition : the <strong>lowest level to which work can be divided on a project</strong>. ProcessScheduler's primary objective is to compute a chronological sequence, or temporal order, for a collection of tasks while adhering to a specific set of constraints. Three types of <code>Task</code> may be used to represent a scheduling problem : <strong>ZeroDurationTask</strong>, <strong>FixedDurationTask</strong> and <strong>VariableDurationTask</strong>. They follow the inheritance class diagram represented below.</p>
+<h1 id="task-model">Task model<a class="headerlink" href="#task-model" title="Permanent link">&para;</a></h1>
+<p>A <code>Task</code> instance is basically a time interval, defined by the three following parameters:</p>
+<ul>
+<li>
+<p><code>start</code>: a point in the <span class="arithmatex">\([0, horizon]\)</span> integer interval. If the task is scheduled, then <span class="arithmatex">\(start&gt;=0\)</span></p>
+</li>
+<li>
+<p><code>end</code>: a point in the <span class="arithmatex">\([0, horizon]\)</span> integer interval. If the task is scheduled, then <span class="arithmatex">\(end&gt;=start\)</span> and <span class="arithmatex">\(end&lt;=horizon\)</span></p>
+</li>
+<li>
+<p><code>duration</code>: a integer number of periods, such as <span class="arithmatex">\(duration=end-start\)</span></p>
+</li>
+</ul>
+<p><img alt="A task" src="../img/Task.svg" width="80%" /></p>
 <pre class="mermaid"><code>classDiagram
   Task &lt;|-- ZeroDurationTask
   Task &lt;|-- FixedDurationTask
@@ -1767,8 +1585,18 @@ class Task{
     +int priority
     +int work_amount
 }
-</code></pre>
-<h2 id="common-base-task-model">Common base Task model<a class="headerlink" href="#common-base-task-model" title="Permanent link">&para;</a></h2>
+class FixedDurationTask{
+    +int duration
+}
+class VariableDurationTask{
+    +int min_duration
+    +int max_duration
+    +list allowed_durations
+}</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>Task</code> class has to be considered as an abstract class that should not be instantiated. Use any of its three specialization (<code>ZeroDurationTask</code>, <code>FixedDurationTask</code> or <code>VariableDurationTask</code>) to represent your scheduling problem.</p>
+</div>
 <p>The <code>Task</code> class and its derivatives represent any activity. The parameters for the creation of a <code>Task</code> are the following:</p>
 <table>
 <thead>
@@ -1824,19 +1652,56 @@ class Task{
 </tr>
 </tbody>
 </table>
-<p>A <code>Task</code> instance is defined by the three following parameters:</p>
-<ul>
-<li>
-<p><code>start</code>: a point in the <span class="arithmatex">\([0, horizon]\)</span> integer interval. If the task is scheduled, then <span class="arithmatex">\(start&gt;=0\)</span></p>
-</li>
-<li>
-<p><code>end</code>: a point in the <span class="arithmatex">\([0, horizon]\)</span> integer interval. If the task is scheduled, then <span class="arithmatex">\(end&gt;=start\)</span> and <span class="arithmatex">\(end&lt;=horizon\)</span></p>
-</li>
-<li>
-<p><code>duration</code>: a integer number of periods, such as <span class="arithmatex">\(duration=end-start\)</span></p>
-</li>
-</ul>
-<p><img alt="A task" src="../img/Task.svg" width="80%" /></p>
+<p>Additional parameters for the <code>FixedDurationTask</code> class.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>duration</td>
+<td>int</td>
+<td></td>
+<td>The task duration, such that <span class="arithmatex">\(duration=end-start\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Additional parameters for the <code>VariableDurationTask</code> class.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>min_duration</td>
+<td>int</td>
+<td>0</td>
+<td>Minimal task duration</td>
+</tr>
+<tr>
+<td>max_duration</td>
+<td>int</td>
+<td>None</td>
+<td>Maximal task duration</td>
+</tr>
+<tr>
+<td>allowed_duration</td>
+<td>list</td>
+<td>None</td>
+<td>List of possible task durations</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Example: The duration of this task depends on the number</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># of workers handling boxes.</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">move_boxes</span> <span class="o">=</span> <span class="n">VariableDurationTask</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;MoveBoxesFromMachineAToInventory&#39;</span><span class="p">)</span>
@@ -1956,7 +1821,7 @@ class Task{
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      &copy; 2023 <a href="https://github.com/tpaviot" target="_blank" rel="noopener">Thomas Paviot</a>
+      &copy; 2024 <a href="https://github.com/tpaviot" target="_blank" rel="noopener">Thomas Paviot</a>
 
     </div>
   

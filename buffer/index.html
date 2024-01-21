@@ -768,16 +768,7 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring-buffer-level" class="md-nav__link">
-    <span class="md-ellipsis">
-      Monitoring buffer level
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Monitoring buffer level">
+    <nav class="md-nav" aria-label="Loading and unloading buffers">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1626,16 +1617,7 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring-buffer-level" class="md-nav__link">
-    <span class="md-ellipsis">
-      Monitoring buffer level
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Monitoring buffer level">
+    <nav class="md-nav" aria-label="Loading and unloading buffers">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1702,6 +1684,7 @@ class Buffer{
     +int upper_bound
     +int lowet_bound
     +int initial_level
+    +int final_level
 }</code></pre>
 <ol>
 <li>
@@ -1714,7 +1697,10 @@ class Buffer{
 <h2 id="buffer-attributes">Buffer Attributes<a class="headerlink" href="#buffer-attributes" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p><code>initial_level</code>: Represents the number of items in the buffer at time <code>t=0</code>. </p>
+<p><code>initial_level</code>: Represents the number of items in the buffer at time <code>t=0</code>.</p>
+</li>
+<li>
+<p><code>final_level</code>: Represents the number of items in the buffer at schedule <code>t=horizon</code>.</p>
 </li>
 <li>
 <p><code>lower_bound</code>: An optional parameter setting the minimum number of items in the buffer. If the buffer level falls below this, the problem is unsatisfiable. This parameter can be crucial in settings where maintaining a minimum inventory level is essential for continuous operation.</p>
@@ -1723,12 +1709,17 @@ class Buffer{
 <p><code>upper_bound</code>: An optional parameter representing the maximum buffer capacity. Exceeding this limit makes the problem unsatisfiable. This reflects the physical limitations of buffer spaces in industrial settings, especially with larger items.</p>
 </li>
 </ul>
-<p>Both <code>initial_level</code>, <code>lower_bound</code> and <code>upper_bound</code> are optional parameters. A <code>NonConcurrentBuffer</code> can be created as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">buff1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">NonConcurrentBuffer</span><span class="p">(</span><span class="s2">&quot;Buffer1&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">buff2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">NonConcurrentBuffer</span><span class="p">(</span><span class="s2">&quot;Buffer2&quot;</span><span class="p">,</span> <span class="n">initial_level</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">buff3</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">NonConcurrentBuffer</span><span class="p">(</span><span class="s2">&quot;Buffer3&quot;</span><span class="p">,</span> <span class="n">lower_bound</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">buff4</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">NonConcurrentBuffer</span><span class="p">(</span><span class="s2">&quot;Buffer4&quot;</span><span class="p">,</span> <span class="n">upper_bound</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">buff5</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">NonConcurrentBuffer</span><span class="p">(</span><span class="s2">&quot;Buffer5&quot;</span><span class="p">,</span>
+<p>Both <code>initial_level</code>, <code>final_level</code>, <code>lower_bound</code> and <code>upper_bound</code> are optional parameters.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code>lower_bound</code> (resp. <code>upper_bound</code>) is specified, the solver will schedule tasks to that the buffer level is never lower (resp. greater) than the lower (resp. upper) bound.</p>
+</div>
+<p>A <code>NonConcurrentBuffer</code> can be created as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">buff1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">NonConcurrentBuffer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Buffer1&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">buff2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">NonConcurrentBuffer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Buffer2&quot;</span><span class="p">,</span> <span class="n">initial_level</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">buff3</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">NonConcurrentBuffer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Buffer3&quot;</span><span class="p">,</span> <span class="n">lower_bound</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">buff4</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">NonConcurrentBuffer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Buffer4&quot;</span><span class="p">,</span> <span class="n">upper_bound</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">buff5</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">NonConcurrentBuffer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Buffer5&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                               <span class="n">initial_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                               <span class="n">lower_bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                               <span class="n">upper_bound</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -1737,7 +1728,7 @@ class Buffer{
 <p>Buffers are loaded/unloaded by dedicate tasks.</p>
 <ul>
 <li>
-<p><strong>Unloading Tasks</strong>: These tasks remove a specified quantity at the start time, mimicking the immediate release of resources upon task commencement.</p>
+<p><strong>Unloading Tasks</strong>: These tasks remove a specified quantity at the task start time, mimicking the immediate release of resources upon task commencement.</p>
 </li>
 <li>
 <p><strong>Loading Tasks</strong>: These tasks add to the buffer upon task completion, reflecting the production or processing output.</p>
@@ -1753,12 +1744,8 @@ class Buffer{
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Unloading tasks remove quantities at the start time, while loading tasks add to the buffer at completion time.</p>
+<p>Unloading tasks remove quantities at the task start time, while loading tasks add to the buffer at task completion time.</p>
 </div>
-<h2 id="monitoring-buffer-level">Monitoring buffer level<a class="headerlink" href="#monitoring-buffer-level" title="Permanent link">&para;</a></h2>
-<p>There are two indicators available:</p>
-<p>IndicatorMaxBufferLevel</p>
-<p>IndicatorMinBufferLevel</p>
 <h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
 <p>Let's take an example where a task <code>T1</code> uses a machine <code>M1</code> to manufacture a part (duration time for this task is 4). It takes one raw part in a <code>Buffer1</code> at the start time and loads the <code>Buffer2</code> at completion time.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">processscheduler</span> <span class="k">as</span> <span class="nn">ps</span>
@@ -1774,8 +1761,8 @@ class Buffer{
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">buffer_2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">NonConcurrentBuffer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Buffer2&quot;</span><span class="p">,</span> <span class="n">initial_level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1"># buffer constraints</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="n">c1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">TaskUnloadBuffer</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task_1</span><span class="p">,</span> <span class="n">buffer</span><span class="o">=</span><span class="n">buffer_1</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">c2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">TaskLoadBuffer</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task_1</span><span class="p">,</span> <span class="n">buffer</span><span class="o">=</span><span class="n">buffer_2</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="n">bc_1</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">TaskUnloadBuffer</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task_1</span><span class="p">,</span> <span class="n">buffer</span><span class="o">=</span><span class="n">buffer_1</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">bc_2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">TaskLoadBuffer</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task_1</span><span class="p">,</span> <span class="n">buffer</span><span class="o">=</span><span class="n">buffer_2</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1"># solve and render</span>
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="n">solver</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SchedulingSolver</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">pb</span><span class="p">)</span>
@@ -1859,7 +1846,7 @@ class Buffer{
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      &copy; 2023 <a href="https://github.com/tpaviot" target="_blank" rel="noopener">Thomas Paviot</a>
+      &copy; 2024 <a href="https://github.com/tpaviot" target="_blank" rel="noopener">Thomas Paviot</a>
 
     </div>
   
