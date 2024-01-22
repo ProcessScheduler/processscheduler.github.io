@@ -238,7 +238,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../about/" class="md-tabs__link">
+        <a href="../features/" class="md-tabs__link">
           
   
     
@@ -373,6 +373,8 @@
       
         
       
+        
+      
     
     
     
@@ -413,11 +415,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About
+    Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inside/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What's inside
   </span>
   
 
@@ -1548,24 +1571,28 @@
 <h1 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h1>
 <p>The structure of this documentation is designed to mirror the typical workflow of a ProcessScheduler Python script, guiding you through each step of the scheduling process:</p>
 <pre class="mermaid"><code>graph TD
-  A[1. Create a SchedulingProblem] --&gt; B[2. Create objects that represent your problem];
+  A[1. Create a SchedulingProblem] --&gt; B[2. Create objects that represent the problem];
   B --&gt; C[3. Constraint the schedule];
-  C --&gt; D[4. Add objectives];
-  D --&gt; E[5. Solve];
-  E --&gt; F[6. Analyse];
-  F --&gt; B;</code></pre>
+  C --&gt; D[4. Add indicators];
+  D --&gt; E[5. Add objectives];
+  E --&gt; F[6. Solve];
+  F --&gt; G[7. Analyse];
+  G --&gt; B;</code></pre>
 <ol>
 <li>
 <p>Create a <strong><a href="../scheduling_problem/">SchedulingProblem</a></strong>: This is the foundational step where you establish the SchedulingProblem, serving as the primary container for all components of your scheduling scenario.</p>
 </li>
 <li>
-<p>Create Objects Representing Your Problem: Select appropriate <strong>Task</strong> and <strong>Resource</strong> objects to accurately represent the elements of your use case. This step involves defining the tasks to be scheduled and the resources available for these tasks.</p>
+<p>Create <strong>Objects Representing The Problem</strong>: Select appropriate <strong>Task</strong> and <strong>Resource</strong> objects to accurately represent the elements of your use case. This step involves defining the tasks to be scheduled and the resources available for these tasks.</p>
 </li>
 <li>
 <p>Apply <strong>Constraints</strong> to the Schedule: Introduce temporal or logical constraints to define how tasks should be ordered or how resources are to be utilized. Constraints are critical for reflecting real-world limitations and requirements in your schedule.</p>
 </li>
 <li>
-<p>Define <strong>Objectives</strong>: Optionally, you can specify one or more objectives. Objectives are used to determine what constitutes an 'optimal' schedule within the confines of your constraints. This could include minimizing total time, cost, or other metrics relevant to your scenario.</p>
+<p>Add <strong>Indicators</strong> (optional): indicators or metrics are added to the scheduling problem. These indicators might include key performance metrics, resource utilization rates, or other measurable factors that are crucial for analyzing the effectiveness of the schedule. By adding this step, the schedule can be more effectively monitored and evaluated.</p>
+</li>
+<li>
+<p>Define <strong>Objectives</strong> (optional): you can specify one or more objectives. Objectives, built on Indicators, are used to determine what constitutes an 'optimal' schedule within the confines of your constraints. This could include minimizing total time, cost, or other metrics relevant to your scenario.</p>
 </li>
 <li>
 <p><strong>Execute the Solver</strong>: Run the solver to find a feasible (and possibly optimal, depending on defined objectives) schedule based on your tasks, resources, constraints, and objectives.</p>
@@ -1574,7 +1601,7 @@
 <p><strong>Analyze</strong> the Results: Once the solver has found a solution, you can render the schedule in various formats such as a Gantt chart or export it to Excel. This step is crucial for evaluating the effectiveness of the proposed schedule. Based on the analysis, you might revisit the representation stage to adjust your problem model, refine constraints, or alter objectives.</p>
 </li>
 </ol>
-<p>This workflow provides a structured approach to building and solving scheduling problems using the ProcessScheduler library, ensuring that all essential aspects of your scheduling scenario are methodically addressed.</p>
+<p>This workflow provides a structured approach to building and solving scheduling problems, ensuring that all essential aspects of your scheduling scenario are methodically addressed.</p>
 
 
 

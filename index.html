@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#processscheduler" class="md-skip">
+        <a href="#processscheduler-a-python-framework-for-scheduling-and-resource-allocation" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ProcessScheduler
+              ProcessScheduler - A python framework for scheduling and resource allocation
             
           </span>
         </div>
@@ -234,7 +234,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="about/" class="md-tabs__link">
+        <a href="features/" class="md-tabs__link">
           
   
     
@@ -367,6 +367,8 @@
       
         
       
+        
+      
     
     
     
@@ -407,11 +409,32 @@
   
   
     <li class="md-nav__item">
-      <a href="about/" class="md-nav__link">
+      <a href="features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About
+    Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inside/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What's inside
   </span>
   
 
@@ -1498,6 +1521,50 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-it-intended-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is it intended for?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#who-is-it-intended-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who is it intended to?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-features-versatility-and-dependability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Features: Versatility and Dependability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1527,42 +1594,40 @@
   
 
 
-<h1 id="processscheduler">ProcessScheduler<a class="headerlink" href="#processscheduler" title="Permanent link">&para;</a></h1>
+<h1 id="processscheduler-a-python-framework-for-scheduling-and-resource-allocation">ProcessScheduler - A python framework for scheduling and resource allocation<a class="headerlink" href="#processscheduler-a-python-framework-for-scheduling-and-resource-allocation" title="Permanent link">&para;</a></h1>
 <p><a href="https://www.codacy.com/gh/tpaviot/ProcessScheduler/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tpaviot/ProcessScheduler&amp;utm_campaign=Badge_Grade"><img alt="Codacy Badge" src="https://app.codacy.com/project/badge/Grade/7221205f866145bfa4f18c08bd96e71f" /></a>
 <a href="https://codecov.io/gh/tpaviot/ProcessScheduler"><img alt="codecov" src="https://codecov.io/gh/tpaviot/ProcessScheduler/branch/master/graph/badge.svg?token=9HI1FPJUDL" /></a>
 <a href="https://dev.azure.com/tpaviot/ProcessScheduler/_build?definitionId=9"><img alt="Azure Build Status" src="https://dev.azure.com/tpaviot/ProcessScheduler/_apis/build/status/tpaviot.ProcessScheduler?branchName=master" /></a>
 <a href="https://mybinder.org/v2/gh/tpaviot/ProcessScheduler/HEAD?filepath=examples-notebooks"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a>
 <a href="https://badge.fury.io/py/ProcessScheduler"><img alt="PyPI version" src="https://badge.fury.io/py/ProcessScheduler.svg" /></a>
 <a href="https://doi.org/10.5281/zenodo.4480745"><img alt="DOI" src="https://zenodo.org/badge/DOI/10.5281/zenodo.4480745.svg" /></a></p>
-<p>ProcessScheduler is a versatile Python package designed for creating optimized scheduling in various industrial domains, including manufacturing, construction, healthcare, and more. This tool, aimed at project managers, business organization consultants, or industrial logistics experts, focuses on optimizing time or cost objectives. It offers a robust set of classes and methods to model a wide range of use cases with rich semantics, making it ideal for tackling intricate scheduling challenges. The package simplifies complex mathematical calculations necessary for problem resolution, thereby allowing users to concentrate on problem modeling rather than the computational intricacies, streamlining operations and offering solutions for scenarios that defy straightforward resolutions.</p>
-<p>Within this toolkit, you'll find a rich array of features, including:</p>
+<h2 id="what-is-it-intended-for">What is it intended for?<a class="headerlink" href="#what-is-it-intended-for" title="Permanent link">&para;</a></h2>
+<p>ProcessScheduler is a versatile Python package designed for creating optimized scheduling in various industrial domains, including manufacturing, construction, healthcare, and more.</p>
+<h2 id="who-is-it-intended-to">Who is it intended to?<a class="headerlink" href="#who-is-it-intended-to" title="Permanent link">&para;</a></h2>
+<p>Project managers, business organization consultants, industrial logistics experts, teachers and students.</p>
+<h2 id="core-features-versatility-and-dependability">Core Features: Versatility and Dependability<a class="headerlink" href="#core-features-versatility-and-dependability" title="Permanent link">&para;</a></h2>
+<p><strong>Versatility</strong>: At its core, ProcessScheduler acts as a bridge between specific business requirements and their mathematical representations. It leverages a collection of versatile, business-focused generic classes to represent a broad spectrum of scheduling challenges, effectively translating them into solvable mathematical models.</p>
+<p><img alt="svg" src="img/versatility.svg" /></p>
+<p><strong>Dependability</strong>: The reliability of ProcessScheduler is fortified through several key aspects:</p>
 <ul>
 <li>
-<p><strong>Task Definition</strong>: Define tasks with zero, fixed, or variable durations, along with work_amount specifications.</p>
+<p>Utilization of the renowned Pydantic Python package for class construction, ensuring robust data validation and settings management.</p>
 </li>
 <li>
-<p><strong>Resource Management</strong>: Create and manage resources, complete with productivity and cost attributes. Efficiently assign resources to tasks.</p>
+<p>A comprehensive suite of unit tests, with the test code volume surpassing the core code by 1.5 times, exemplifying thorough testing protocols.</p>
 </li>
 <li>
-<p><strong>Temporal Task Constraints</strong>: Handle task temporal constraints such as precedence, fixed start times, and fixed end times.</p>
+<p>High code quality, ranked 'A' rank on Codacy, an automated code review service.</p>
 </li>
 <li>
-<p><strong>Resource Constraints</strong>: Manage resource availability and allocation.</p>
+<p>Almost total code coverage, reaching over 99%, demonstrating the thoroughness of testing and reliability.</p>
 </li>
 <li>
-<p><strong>Logical Operations</strong>: Employ first-order logic operations to define relationships between tasks and resource constraints, including and/or/xor/not boolean operators, implications, if/then/else conditions.</p>
-</li>
-<li>
-<p><strong>Multi-Objective Optimization</strong>: Optimize schedules across multiple objectives.</p>
-</li>
-<li>
-<p><strong>Gantt Chart Visualization</strong>: Visualize schedules effortlessly with Gantt chart rendering, compatible with both matplotlib and plotly libraries.</p>
-</li>
-<li>
-<p><strong>Export Capabilities</strong>: Seamlessly export solutions to JSON format and SMT problems to SMTLIB format.</p>
+<p>Continuous integration via Microsoft Azure, ensuring consistent and reliable updates and maintenance.</p>
 </li>
 </ul>
-<p>This comprehensive guide will walk you through the process of model creation, solver execution, and solution analysis, making it a valuable resource for harnessing the full potential of ProcessScheduler.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>No need to be an expert. To effectively utilize ProcessScheduler, users are expected to have a moderate level of proficiency in both Python programming and the fundamentals of scheduling algorithms.</p>
 
 
 
