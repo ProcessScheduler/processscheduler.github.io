@@ -1768,7 +1768,7 @@ The <code>horizon</code> parameter does not need to be provided. If an integer i
 <p>It is advisable to set the <code>horizon</code> parameter when the scheduling involves a predetermined period (e.g., a day, week, or month). This is particularly useful in scenarios aiming to minimize the scheduling horizon, such as in manufacturing scheduling where the goal is to reduce the time needed for processing jobs. In such cases, omitting the horizon allows the solver to optimize it based on problem requirements.</p>
 </div>
 <h2 id="schedulingproblem-instantiation">SchedulingProblem instantiation<a class="headerlink" href="#schedulingproblem-instantiation" title="Permanent link">&para;</a></h2>
-<p>Here is the simpliest way to create <code>SchedulingProblem</code>.</p>
+<p>Here is the simplest way to create <code>SchedulingProblem</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">processscheduler</span> <span class="k">as</span> <span class="nn">ps</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">my_problem</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SchedulingProblem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;MyFirstSchedulingProblem&quot;</span><span class="p">,</span> <span class="n">horizon</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </code></pre></div>

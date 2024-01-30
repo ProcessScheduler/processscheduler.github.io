@@ -1771,7 +1771,10 @@
 
 
 <h1 id="use-case-flowshop-scheduling">Use case: flowshop scheduling<a class="headerlink" href="#use-case-flowshop-scheduling" title="Permanent link">&para;</a></h1>
-<p><a href="https://mybinder.org/v2/gh/tpaviot/ProcessScheduler/HEAD?filepath=doc/use-case-flow-shop.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<p><a href="https://mybinder.org/v2/gh/tpaviot/ProcessScheduler/HEAD?filepath=doc/use-case-flow-shop.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a>
+<a target="_blank" href="https://colab.research.google.com/github/tpaviot/ProcessScheduler/blob/master/examples-notebooks/use-case-flow-shop.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a></p>
 <p>This example is based on the paper from Tao et al. (2015), where authors present an introduction example. In a flow shop problem, a set of <span class="arithmatex">\(n\)</span> jobs has to be processed on <span class="arithmatex">\(m\)</span> different machines in the same order. Job <span class="arithmatex">\(j\)</span>, <span class="arithmatex">\(j=1,2,...,n\)</span> is processed on machines <span class="arithmatex">\(i\)</span>, <span class="arithmatex">\(i=1,2,..,m\)</span>, with a nonnegative processing time <span class="arithmatex">\(p(i,j)\)</span> and a release date <span class="arithmatex">\(r_j\)</span>, which is the earliest time when the job is permitted to process. Each machine can process at most one job and each job can be handled by at most one machine at any given time. The machine processes the jobs in a first come, first served manner. The goal is to determine a job sequence that minimizes the makespan. The problem statement is:</p>
 <p><img alt="ProblemDefinition" src="../img/flow_shop_problem.png" width="200" /></p>
 <p>The following solution is reported by the authors (order J1, J3, J4, J2, scheduled horizon: 29):</p>
